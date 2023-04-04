@@ -1,12 +1,9 @@
-
 import { cpf } from 'cpf-cnpj-validator';
 import React, { useState, useEffect } from 'react';
 import LoadingImg from '../../assets/img/Loading3.gif';
 import Constants from './Constants';
-
-
+import Axios from 'axios'
 const Formulario = () => {
-    // Variaveis que Irão modificar as classes no Front-end
     const [container, setContainer] = useState('oculto');
     const [loginForm, setloginForm] = useState('oculto');
     const [CadatroForm, setCadatroForm] = useState('oculto');
@@ -15,19 +12,64 @@ const Formulario = () => {
     const [showSliderLeftOne, setShowSliderLeftOne] = useState(false);
     const [showSliderRightOne, setShowSliderRightOne] = useState(false);
     const [textVisible, settextVisible] = useState(false);
-    // Função para Inicializar Formulario vazio
     const [user, setUser] = useState({
-        nome: "",
+        name: "",
         cpf: "",
         senha: "",
         cfmsenha: ""
     });
+    const [isValidCpf, setIsValidCpf] = useState('');
+    const [cpfValue, setCpfValue] = useState('');
+    const [status, setStatus] = useState({
+        type: "",
+        mensagem: ""
+    });
+    const [statusLogin, setStatusLogin] = useState({
+        type: "",
+        mensagem: ""
+    });
+    const handleClickButton = () => {
+        if (validate_status()) {
+            Axios.post("http://localhost:3001/register", {
+                name: user.name,
+                cpf: user.cpf,
+                senha: user.senha
+            }).then((response) => console.log(response))
+                .catch((error) => {
+                    console.log(error)
+                    setStatus({ type: "error", mensagem: "Usuário já cadastrado" })
+                })
+        }
+    }
+    const handleLogin = () => {
+        if (typeof user.cpf !== 'undefined' && typeof user.senha !== 'undefined') {
+            Axios.post("http://localhost:3001/login", {
+                cpf: user.cpf,
+                senha: user.senha
+            }).then((response) => {
+                if (response.status === 200) {
+                    setUser({
+                        cpf: response.data.cpf,
+                        nome: response.data.nome,
+                    })
+                    setStatusLogin({ type: "success", mensagem: "Login realizado com sucesso" })
+                    handleClick()
+                } else {
+                    setStatusLogin({ type: "error", mensagem: "CPF ou senha incorretos" })
+                }
+            }).catch((error) => {
+                console.error(error)
+                setStatusLogin({ type: "error", mensagem: "CPF ou senha incorretos" })
+            });
+        }
+    }
     const formOne = (e) => {
         e.preventDefault();
     }
-    // Checagem de CPF verdeiro ou não
-    const [cpfValue, setCpfValue] = useState('');
-    const [isValidCpf, setIsValidCpf] = useState('');
+    const handleMultipleCpf = (e) => {
+        handleCpfChange(e)
+        valueInput(e)
+    }
     const handleCpfChange = (event) => {
         const newCpfValue = event.target.value;
         setCpfValue(newCpfValue);
@@ -36,18 +78,12 @@ const Formulario = () => {
         const isValid = cpf.isValid(cpfValue);
         setIsValidCpf(isValid);
     }, [cpfValue])
-    // Funçao para Checar Status do Campo preenchido se foi correto ou não e assim fazer a validação
-    const [status, setStatus] = useState({
-        type: "",
-        mensagem: ""
-    });
-    // Variável que irá receber os inputs 
     const valueInput = e => setUser({ ...user, [e.target.name]: e.target.value });
-    // Funcão para validar e acrescentar a mensagem que será exibida no front-end
     function validate_status() {
-        // isso vai verificar o campos isoladamente e o return true é o mesmo que por exemplo else { user.name="true"}
+        const nameRegex = /^[A-Z][a-z]+([.'-][A-Za-z]+)*( [A-Za-z]+)+$/
         if (!user.name) return setStatus({ type: "error", mensagem: "Campos Nome Não preenchido" });
         if (user.name.length < 10) return setStatus({ type: "error", mensagem: "Nome Menor que 10 caracteres!" });
+        if (!nameRegex.test(user.name)) return setStatus({ type: "error", mensagem: "Nome invalido!" })
         if (!isValidCpf) {
             setStatus({ type: "error", mensagem: "CPF inválido!" });
             return false;
@@ -64,13 +100,8 @@ const Formulario = () => {
         }
         return true;
     }
-    // Efeito para alteraçao de Classes
-    // Variável que irá se comunicar com o back-end e também confirmar se irá passar do Front para o Back-end
-    // Se a const saveForm for verdadeira ela primeiro passa para o 'Status' como Aprovado e assim esta autorizada a passar.
     const addUser = async e => {
-        // PreventDefault ele não permite a pagina relogar futuramente será retirado para logar no banco
         e.preventDefault();
-        //Agora através da funçao validate_status eu vou evitar do formulario enviar ou ñ enviar com o return;
         if (!validate_status()) return;
         const saveForm = true;
         if (saveForm) {
@@ -112,8 +143,6 @@ const Formulario = () => {
             setContainer('visivel');
         }, 600);
     }
-
-    // CAMPOS ESQUECI A SENHA CONSTANTES E FUNÇÕES
     const [email, setEmail] = useState('');
     const [ChangePass, setChangePass] = useState(true);
     const handleEmailChange = (event) => {
@@ -128,7 +157,6 @@ const Formulario = () => {
         setChangePass(true);
         setloginForm('visivel');
     }
-    // LOADING CARRENGANDO...
     const [isLoading, setIsLoading] = useState(false);
     useEffect(() => {
         setloginForm('visivel');
@@ -136,14 +164,11 @@ const Formulario = () => {
         setContainer('visivel');
         return () => clearTimeout();
     }, []);
-    //EasterEgg 
-    // Mudança de Tema DARK, LIGHT mode troca das Variaveis no CSS.
     const [theme, setTheme] = useState("light");
     function handleThemeChange() {
         alert("Parabéns! Você encontrou um Easter Egg! Clique aqui para ativar/desativar o Dark Mode. Continue procurando por mais para modificar o robô e o cabeçalho. O primeiro a postar uma captura de tela em dark mode no grupo ganhará chocolate. Boa sorte!");
         setTheme(theme === "light" ? "dark" : "light");
     }
-    // Mudança de imagem BOA PARA A DARK mostra do Segundo EasterEGG
     const [ChangeImg, setChangeImg] = useState(false);
     function handleChangeImg() {
         setChangeImg(true);
@@ -152,9 +177,7 @@ const Formulario = () => {
     function handleResetImg() {
         setChangeImg(false);
     }
-    // Imagem quando carregar o Login
     const [LoadingImgOn, setLoadingImgOn] = useState(false);
-    // Se o Cadastro Foi Completado basta seguir para 2 pagina
     function handleClick() {
         setLoadingImgOn(true);
         setLinkON(false);
@@ -170,52 +193,46 @@ const Formulario = () => {
             Constants.TIMELINKTWO();
         }, 2200);
     }
-    // Para os links ficarem oculto consertando bugs
     const [linkOn, setLinkON] = useState(false)
     return (
         <>
             <div className={` ${ChangeImg ? 'containerBodyNewImg' : 'BodyForm'}`}>
-                {/*Imagem quando carregar o Login */}
                 <div className={`Loading_Form  ${LoadingImgOn ? 'visivel' : 'oculto'}`}>
                     <img src={LoadingImg} alt="" />
                 </div>
                 <div className={`links ${linkOn ? 'visivel' : 'oculto'}`}>
-                    {/* EasterEgg */}
                     <a href="#" class='github_icon'
                         onClick={ChangeImg ? handleResetImg : handleChangeImg}><Constants.GITHUB_ICON /></a>
-                    {/* BOTAO DARK MOD */}
                     <a href="#" class='github_icon' onClick={() => handleThemeChange()}><Constants.MINION_ICON /></a>
                 </div>
-                {/* Formulario de Login */}
                 <div className={`theme ${theme === "light" ? "light-theme" : "dark-theme"}`}>
                     <div className={`${container === 'visivel' ? 'visible' : 'hidden'} containerMaster `}>
                         <div className='pixelHigh'>
                             <div className={`${loginForm === 'visivel' ? 'visible ' : 'hidden'}`}>
                                 <div className={`login ${showSliderLeft ? 'SliderLeft' : ''}`}>
-                                    {/* PARTE LOGIN */}
                                     <div className={`${textVisible ? 'texto_invisivel' : 'texto_visivel'}`}>
                                         <h1 className='form__title'>Login</h1>
                                         <p>Use sua Conta cadastrada</p>
+                                        {statusLogin.type === "error" ? <p style={{ color: "red" }}>{statusLogin.mensagem}</p> : ""}
                                         <form onSubmit={formOne}>
                                             <input
                                                 type="text"
                                                 id="cpf"
+                                                name='cpf'
                                                 placeholder='CPF'
-                                                onChange={handleCpfChange}
+                                                onChange={handleMultipleCpf}
                                                 maxLength="11"
                                                 className={isValidCpf ? 'valid-cpf' : 'invalid-cpf'}
-                                                required
                                             />
                                             <input type="password"
-                                                name='password'
+                                                name='senha'
                                                 placeholder='Senha'
                                                 maxLength="5"
-                                                required
+                                                onChange={valueInput}
                                             />
                                             <a href="#" onClick={SendPasswordResetEmail}>Esqueceu a senha</a>
-                                            <button onClick={handleClick} className='form__button'>Entrar</button>
+                                            <button onClick={() => handleLogin()} className='form__button'>Entrar</button>
                                         </form>
-
                                     </div>
                                 </div>
                                 <div className={`cadastro ${showSliderRight ? 'SliderRight' : ''}`}>
@@ -226,8 +243,6 @@ const Formulario = () => {
                                     </div>
                                 </div>
                             </div>
-
-                            {/* PARTE ESQUECI MINHA SENHA */}
                             <div className={` ${ChangePass ? 'EsqueciSenhaHidden' : 'EsqueciSenha'}`}>
                                 <button className='Btn_Back' onClick={PassBack}>Voltar</button>
                                 <img src={Constants.LOGOGRAU} alt="Logo" />
@@ -246,7 +261,6 @@ const Formulario = () => {
                                     </form>
                                 </div>
                             </div>
-                            {/* PARTE DO CADASTRO */}
                             <div className={`${CadatroForm === 'visivel' ? 'visible' : 'hidden'}`}>
                                 <div className={`welcome_back ${showSliderLeftOne ? 'SliderLeft' : ''}`}>
                                     <div className={`Back ${textVisible ? 'texto_visivel' : 'texto_invisivel'}`}>
@@ -262,15 +276,19 @@ const Formulario = () => {
                                         <h1 className='form__title'>Criar Conta</h1>
                                         <p>Não Trate como Constante Quem te Trata Como Variável</p>
                                         <br></br>
-                                        {/* Nesse campos vou apresentar as mensagens de aprovação do formulario, lembrando que ele esta iniciando vazio como declaro na linha 18 */}
                                         {status.type === "error" ? <p style={{ color: "red" }}>{status.mensagem}</p> : ""}
                                         <form onSubmit={addUser} className="form__input">
-                                            <input type="text" name="name" placeholder="Nome" onChange={valueInput} maxLength="10" />
+                                            <input
+                                                type="text"
+                                                name="name"
+                                                placeholder="Nome"
+                                                onChange={valueInput} maxLength="10" />
                                             <input
                                                 type="text"
                                                 id="cpf"
+                                                name='cpf'
                                                 placeholder='CPF'
-                                                onChange={handleCpfChange}
+                                                onChange={handleMultipleCpf}
                                                 maxLength="11"
                                                 className={isValidCpf ? 'valid-cpf' : 'invalid-cpf'}
                                             />
@@ -286,13 +304,12 @@ const Formulario = () => {
                                                 onChange={valueInput}
                                                 maxLength="5"
                                             />
-                                            <button className='form__button'>Criar a Conta</button>
+                                            <button className='form__button' onClick={() => handleClickButton()}>Criar a Conta</button>
                                         </form>
                                     </div>
                                 </div>
                             </div>
                         </div>
-
                     </div>
                 </div>
             </div>
