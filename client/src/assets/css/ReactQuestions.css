@@ -1,0 +1,101 @@
+@import url(index.css);
+
+.Questions {
+    margin: 0 auto;
+    width: 80%;
+}
+
+.Questions h2 {
+    margin-top: 40px;
+}
+
+.Questions p {
+    font-size: 20px;
+    text-align: start;
+    margin-bottom: 10px;
+}
+
+.Questions .labelRadio {
+    display: flex;
+    text-align: start;
+    flex-direction: column;
+    margin-bottom: 30px;
+
+}
+
+.Questions label {
+    font-size: 18px;
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.Questions input[type="radio"] {
+    margin-right: 10px;
+    cursor: pointer;
+    width: 20px;
+    height: 20px;
+    margin-bottom: -2px;
+    border-radius: 50%;
+    background-color: var(--msg);
+    border: 1px solid #ccc;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+}
+
+.Questions input[type="radio"]:checked {
+    background-color: var(--bg-dark);
+    border-color: var(--bg-white);
+}
+
+.Questions button {
+    font-size: 15px;
+    background-color: #2196f3;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.Questions button:hover {
+    background-color: #0d8bf2;
+}
+
+.Questions .QuestionsType {
+    width: 700px;
+    margin: auto;
+    align-items: center;
+    text-align: start;
+}
+
+.QuestionsType span {
+    text-align: start;
+}
+
+/* 
+MAQUINA DE ESCREVER */
+
+.typewriter {
+    overflow: hidden;
+    animation: typing 1s steps(30, end);
+
+    width: 100%;
+    letter-spacing: 1px;
+}
+
+@keyframes typing {
+    from {
+        width: 0
+    }
+    to {
+        width: 100%
+    }
+}
+#text {
+    white-space: pre-wrap;
+}
+  .typewriter {
+    animation-delay: calc(50ms * (1 + var(--char-index)));
+  }
