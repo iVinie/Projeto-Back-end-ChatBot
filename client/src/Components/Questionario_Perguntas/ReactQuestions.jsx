@@ -8,52 +8,34 @@ function ReactQuestions() {
         q4: '',
         q5: ''
     });
-
+    let answerUser = []
+    let questionsDB = ['B', 'A', 'C', 'B', 'A']
     const handleAnswerChange = (question, answer) => {
         setAnswers(prevAnswers => ({
             ...prevAnswers,
             [question]: answer
         }));
     }
-
     const checkAnswers = () => {
+        answerUser.push(answers.q1, answers.q2, answers.q3, answers.q4, answers.q5)
         let correctCount = 0;
-
-        if (answers.q1 === 'B') {
-            correctCount++;
+        for(let i = 0; i < 5; i++){
+            if(questionsDB[i] === answerUser[i]){
+                correctCount++
+            }
         }
-
-        if (answers.q2 === 'A') {
-            correctCount++;
-        }
-
-        if (answers.q3 === 'C') {
-            correctCount++;
-        }
-
-        if (answers.q4 === 'B') {
-            correctCount++;
-        }
-
-        if (answers.q5 === 'A') {
-            correctCount++;
-        }
-
         if (correctCount === 5) {
-            alert('Parabéns! Você acertou todas as respostas!');
+            alert(`Parabéns! Você acertou todas as respostas! Sua note é : ${correctCount*2}`);
         } else if (correctCount > 0) {
-            alert(`Você acertou ${correctCount} respostas de 5.`);
+            alert(`Você acertou ${correctCount} respostas de 5. Sua note é : ${correctCount*2}`);
         } else {
             alert('Que pena, você não acertou nenhuma resposta.');
         }
     }
-
     const handleSubmit = (event) => {
         event.preventDefault();
         checkAnswers();
     };
-
-
     return (
         <div className='Questions typewriter' id='text'>
             <h2>Pergunta 1:</h2>
@@ -91,7 +73,6 @@ function ReactQuestions() {
             <h2>Pergunta 3:</h2>
             <p>Qual é a diferença entre state e props?</p>
             <div className='labelRadio'>
-
                 <span className='QuestionsType'>
                     <input type="radio" name="q3" value="A" checked={answers.q3 === 'A'} onChange={() => handleAnswerChange('q3', 'A')} />
                     <span>A. State é imutável e props é mutável</span>
@@ -108,7 +89,6 @@ function ReactQuestions() {
             <h2>Pergunta 4:</h2>
             <p>O que é JSX?</p>
             <div className='labelRadio'>
-
                 <span className='QuestionsType'>
                     <input type="radio" name="q4" value="A" checked={answers.q4 === 'A'} onChange={() => handleAnswerChange('q4', 'A')} />
                     <span>A. Uma sintaxe para descrever objetos em JavaScript</span>
@@ -125,7 +105,6 @@ function ReactQuestions() {
             <h2>Pergunta 5:</h2>
             <p>O que é um hook em React?</p>
             <div className='labelRadio'>
-
                 <span className='QuestionsType'>
                     <input type="radio" name="q5" value="A" checked={answers.q5 === 'A'} onChange={() => handleAnswerChange('q5', 'A')} />
                     <span>A. Uma função que permite utilizar o estado e outros recursos do React em componentes funcionais</span>
@@ -140,14 +119,7 @@ function ReactQuestions() {
                 </span>
             </div>
             <button onClick={handleSubmit}>Verificar Respostas</button>
-            
-
-
         </div>
-
-
-
     );
 }
-
 export default ReactQuestions;
