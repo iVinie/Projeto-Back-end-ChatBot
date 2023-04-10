@@ -19,7 +19,7 @@ function ReactQuestions() {
     const checkAnswers = () => {
         answerUser.push(answers.q1, answers.q2, answers.q3, answers.q4, answers.q5)
         let correctCount = 0;
-        for(let i = 0; i < 5; i++){
+        for(let i = 0; i < questionsDB.length; i++){
             if(questionsDB[i] === answerUser[i]){
                 correctCount++
             }
