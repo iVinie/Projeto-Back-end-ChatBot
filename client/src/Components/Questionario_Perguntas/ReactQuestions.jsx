@@ -1,6 +1,8 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import '../../assets/css/ReactQuestions.css'
+import Axios from 'axios'
 function ReactQuestions() {
+    const [questions, setQuestions] = useState([]);
     const [answers, setAnswers] = useState({
         q1: '',
         q2: '',
@@ -8,8 +10,20 @@ function ReactQuestions() {
         q4: '',
         q5: ''
     });
+    useEffect(() => {
+        Axios.get('http://localhost:3001/perguntas')
+            .then(response => {
+                setQuestions(response.data);
+            })
+            .catch(error => {
+                console.log(error);
+            });
+    }, []);
+    let answerDB = []
     let answerUser = []
-    let questionsDB = ['B', 'A', 'C', 'B', 'A']
+    questions.map((question) => {
+        answerDB.push(question.resposta)
+    })
     const handleAnswerChange = (question, answer) => {
         setAnswers(prevAnswers => ({
             ...prevAnswers,
@@ -19,15 +33,15 @@ function ReactQuestions() {
     const checkAnswers = () => {
         answerUser.push(answers.q1, answers.q2, answers.q3, answers.q4, answers.q5)
         let correctCount = 0;
-        for(let i = 0; i < questionsDB.length; i++){
-            if(questionsDB[i] === answerUser[i]){
+        for (let i = 0; i < answerDB.length; i++) {
+            if (answerDB[i] === answerUser[i]) {
                 correctCount++
             }
         }
         if (correctCount === 5) {
-            alert(`Parabéns! Você acertou todas as respostas! Sua note é : ${correctCount*2}`);
+            alert(`Parabéns! Você acertou todas as respostas! Sua note é : ${correctCount * 2}`);
         } else if (correctCount > 0) {
-            alert(`Você acertou ${correctCount} respostas de 5. Sua note é : ${correctCount*2}`);
+            alert(`Você acertou ${correctCount} respostas de 5. Sua note é : ${correctCount * 2}`);
         } else {
             alert('Que pena, você não acertou nenhuma resposta.');
         }
@@ -38,23 +52,26 @@ function ReactQuestions() {
     };
     return (
         <div className='Questions typewriter' id='text'>
-            <h2>Pergunta 1:</h2>
-            <p>Qual é a função do React?</p>
-            <div className='labelRadio'>
+            {questions.map((question, index) => (
+                <div > <h2>Pergunta {index+1}:</h2>
+                    <p>{question.pergunta}</p>
+                    <div className='labelRadio'>
                 <span className='QuestionsType'>
-                    <input type="radio" name="q1" value="A" checked={answers.q1 === 'A'} onChange={() => handleAnswerChange('q1', 'A')} />
-                    <span>A. Gerenciar o estado da aplicação</span>
+                    <input type="radio" name={`q${index+1}`} value="A" checked={`${index+1}-pergunta` === 'A'} onChange={() => handleAnswerChange(`q${index+1}`, 'A')} />
+                    <span>{question.alternativa1}</span>
                 </span>
                 <span className='QuestionsType'>
-                    <input type="radio" name="q1" value="B" checked={answers.q1 === 'B'} onChange={() => handleAnswerChange('q1', 'B')} />
-                    <span></span>B. Criar interfaces de usuário
+                    <input type="radio" name={`q${index+1}`} value="B" checked={`${index+1}-pergunta` === 'B'} onChange={() => handleAnswerChange(`q${index+1}`, 'B')} />
+                    <span>{question.alternativa2}</span>
                 </span>
                 <span className='QuestionsType'>
-                    <input type="radio" name="q1" value="C" checked={answers.q1 === 'C'} onChange={() => handleAnswerChange('q1', 'C')} />
-                    <span> C. Executar operações assíncronas</span>
+                    <input type="radio" name={`q${index+1}`} value="C" checked={`${index+1}-pergunta` === 'C'} onChange={() => handleAnswerChange(`q${index+1}`, 'C')} />
+                    <span>{question.alternativa3}</span>
                 </span>
             </div>
-            <h2>Pergunta 2:</h2>
+                </div>
+            ))}
+        {/*  <h2>Pergunta 2:</h2>
             <p>O que é um componente no React?</p>
             <div className='labelRadio'>
                 <span className='QuestionsType'>
@@ -117,7 +134,7 @@ function ReactQuestions() {
                     <input type="radio" name="q5" value="C" checked={answers.q5 === 'C'} onChange={() => handleAnswerChange('q5', 'C')} />
                     <span>C. Uma sintaxe para renderizar componentes em JavaScript puro</span>
                 </span>
-            </div>
+            </div> */}
             <button onClick={handleSubmit}>Verificar Respostas</button>
         </div>
     );

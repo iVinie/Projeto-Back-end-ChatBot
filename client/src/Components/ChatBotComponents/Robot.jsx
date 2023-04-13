@@ -13,6 +13,7 @@ import '../../assets/css/ChatBot.css'
 import '../../assets/css/responsive.css'
 import ReactQuestions from '../Questionario_Perguntas/ReactQuestions.jsx';
 import Estudo from '../Questionario_Perguntas/EstudoDeperguntasAleatorias';
+import Axios from 'axios'
 function Robot() {
   const [texto, setTexto] = useState('Ola! Seja bem vindo a prova de back-end');
   const MaquinaDeEscrever = useRef(null);
