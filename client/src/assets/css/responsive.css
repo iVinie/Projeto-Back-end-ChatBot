@@ -1,93 +1,94 @@
 /* * Resolução Full HD - GRAU TECNICO */
 
 @media screen and (max-width: 1920px) {
-    .containerMaster {
-        height: 540px;
-        margin-top: 180px;
-    }
+  .containerMaster {
+    height: 540px;
+    margin-top: 180px;
+  }
 
-    .login {
-        height: 540px;
-    }
+  .login {
+    height: 540px;
+  }
 
-    .cadastro {
-        height: 540px;
-    }
+  .cadastro {
+    height: 540px;
+  }
 
-    .welcome_back {
-        height: 540px;
-    }
+  .welcome_back {
+    height: 540px;
+  }
 
-    .create_account {
-        height: 540px;
-    }
+  .create_account {
+    height: 540px;
+  }
 
-    /* Cabeçalho ChatBot*/
-    .HeaderLinks {
-        height: 10vh;
-        margin: auto;
-        width: 65%;
-        margin-top: 55px;
-    }
+  /* Cabeçalho ChatBot*/
+  .HeaderLinks {
+    height: 10vh;
+    margin: auto;
+    width: 65%;
+    margin-top: 55px;
+  }
 
-    .HeaderLinks img {
-        width: 55%;
-        margin-top: 10px;
-    }
+  .HeaderLinks img {
+    width: 55%;
+    margin-top: 10px;
+  }
 
-    .containerMaster {
-        margin-top: 115px;
-        margin-right: 500px;
-    }
+  .containerMaster {
+    margin-top: 115px;
+    margin-right: 500px;
+  }
 
-    .BodyForm {
-        background-position: -420px 30px;
-    }
+  .BodyForm {
+    background-position: -420px 30px;
+  }
 
-    .containerBodyNewImg {
-        background-position: -420px 30px;
-    }
+  .containerBodyNewImg {
+    background-position: -420px 30px;
+  }
 
-    .LinkChat {
-        font-size: 30px;
-    }
+  .LinkChat {
+    font-size: 30px;
+  }
 
-    .LoginUser {
-        margin-top: 55px;
-        margin-right: 55px;
-    }
+  .LoginUser {
+    margin-top: 55px;
+    margin-right: 55px;
+  }
 
-    /* Cabeçalho Formulario*/
-    .aside {
-        width: 36%;
-    }
+  /* Cabeçalho Formulario*/
+  .aside {
+    width: 36%;
+  }
 
-    .aside img {
-        width: 60%;
-        align-items: center;
-        margin-left: 55px;
-    }
+  .aside img {
+    width: 60%;
+    align-items: center;
+    margin-left: 55px;
+  }
 
-    .chatContainer {
-        width: 64%;
-    }
+  .chatContainer {
+    width: 64%;
+  }
 
-    /* esqueci minha senha */
-    .EsqueciSenha button {
-        margin-top: 65px;
-    }
+  /* esqueci minha senha */
+  .EsqueciSenha button {
+    margin-top: 65px;
+  }
 
-/* RESPONSIVIDADE 1920 PARA O CABEÇALHO  */
+  /* RESPONSIVIDADE 1920 PARA O CABEÇALHO  */
 
-.HeaderLinks .LogoInitial img {
+  .HeaderLinks .LogoInitial img {
     width: 25%;
     margin-left: 435px;
   }
-.BodyLinks {
+
+  .BodyLinks {
     background-color: var(--bg-header);
     width: 1920px;
   }
-  
+
   .HeaderLinks {
     display: flex;
     justify-content: space-between;
@@ -99,31 +100,31 @@
     font-family: 'Lobster', cursive;
     margin-top: 5px;
   }
-  
-  
+
+
   .HeaderLinks .LogoInitial img {
     width: 25%;
     margin-left: 435px;
   }
-  
+
   .HeaderLinks .LogoInitialVisible img {
     width: 35%;
     margin-left: 25px;
     transition: all 1.3s ease-in;
   }
-  
+
   .LinkChat {
     font-size: 29px;
     justify-content: center;
     display: none;
   }
-  
+
   .LinkChatVisible {
     font-size: 29px;
     display: flex;
     justify-content: center;
   }
-  
+
   .LinkChat .Link {
     margin: 0px 7px 0px 7px;
     text-decoration: none;
@@ -135,7 +136,7 @@
     background-position: center bottom;
     padding: 10px;
   }
-  
+
   .LinkChatVisible .Link {
     margin: 0px 7px 0px 7px;
     text-decoration: none;
@@ -147,40 +148,40 @@
     background-position: center bottom;
     padding: 10px;
   }
-  
-  
+
+
   .LinkChat .Link:nth-last-child(1) {
     margin-right: -45px;
   }
-  
+
   .LinkChatVisible .Link:nth-last-child(1) {
     margin-right: -45px;
   }
-  
+
   .LinkChat .Link:hover {
     color: var(--bgGreen);
     background-size: 75% 3px;
   }
-  
+
   .LinkChatVisible .Link:hover {
     color: var(--bgGreen);
     background-size: 75% 3px;
   }
-  
-  
+
+
   .LoginUser {
     margin-bottom: 35px;
     font-family: 'Lobster', cursive;
     display: none;
   }
-  
+
   .LoginUserVisible {
     margin-bottom: 35px;
     font-family: 'Lobster', cursive;
     display: block;
     margin-top: 45px;
   }
-  
+
   .LoginUser .icon {
     font-size: 25px;
     margin-right: 10px;
@@ -190,12 +191,13 @@
     margin-right: 145px;
     color: var(--colorLinks);
   }
+
   .LoginUser:hover .icon {
     color: var(--bgGreen);
   }
-  
-  
-  
+
+
+
   .LoginUserVisible .icon {
     font-size: 25px;
     margin-right: 10px;
@@ -205,15 +207,11 @@
     margin-right: 145px;
     color: var(--colorLinks);
   }
-  
-  .LoginUserVisible:hover .icon{
+
+  .LoginUserVisible:hover .icon {
     color: var(--bgGreen);
-   
   }
-  
-  
-  
-  
+
   .LoginUser span {
     float: right;
     margin-right: 45px;
@@ -226,13 +224,11 @@
     border: 1px solid var(--borderColor);
     border-radius: 20px;
   }
+
   .LoginUser:hover span {
     color: var(--bgGreen);
-   
   }
-  
-  
-  
+
   .LoginUserVisible span {
     float: right;
     margin-right: 45px;
@@ -245,52 +241,48 @@
     border: 1px solid var(--borderColor);
     border-radius: 20px;
   }
-  
+
   .LoginUserVisible:hover span {
-  
     color: var(--bgGreen);
   }
-  
-
-
 }
 
 @media screen and (max-width: 1380px) {
-    .containerMaster {
-        width: 800px;
-        margin: auto;
-        margin-top: 60px;
-        align-items: center;
-    }
+  .containerMaster {
+    width: 800px;
+    margin: auto;
+    margin-top: 60px;
+    align-items: center;
+  } */
 
-    /* Cabeçalho */
-    .HeaderLinks {
-        height: 10vh;
-        margin: auto;
-        width: 50%;
-    }
+  /* Cabeçalho */
+  .HeaderLinks {
+    height: 10vh;
+    margin: auto;
+    width: 50%;
+  }
 
-    .HeaderLinks img {
-        width: 35%;
-        margin-top: 10px;
-    }
+  .HeaderLinks img {
+    width: 35%;
+    margin-top: 10px;
+  }
 
-    .containerMaster {
-        margin-top: 115px;
-    }
+  .containerMaster {
+    margin-top: 115px;
+  }
 
-    .BodyForm {
-        background-position: -700px -50px;
-    }
+  .BodyForm {
+    background-position: -700px -50px;
+  }
 
-    .containerBodyNewImg {
-        background-position: -620px 30px;
-    }
+  .containerBodyNewImg {
+    background-position: -620px 30px;
+  }
 
-    .EsqueciSenha {
-        width: 100%;
-        height: 88vh;
-    }
+  .EsqueciSenha {
+    width: 100%;
+    height: 88vh;
+  }
 
   /* ASIDE CHATBOT */
 
@@ -302,9 +294,106 @@
     background-color: var(--bg-white);
   }
 
-  .aside .btn_chat{
+  .aside .btn_chat {
     margin-left: 247px;
   }
-/* cabeçaho */
 
+  /* cabeçaho */
+}
+
+/* Responsividade 720PX */
+
+@media screen and (max-width: 720px) {
+
+  /* CABEÇALHO */
+  body .HeaderLinks .LogoInitial img {
+    width: 55%;
+    margin-left: 222px;
+
+  }
+
+  body .BodyLinks {
+    width: 810px;
+  }
+
+  body .HeaderLinks{
+    margin-left: 127px;
+  }
+  body .HeaderLinks .LogoInitialVisible img {
+    width: 85%;
+    margin-top: 10px;
+    margin-left: -25px;
+  }
+
+  body.LinkChatVisible {
+    margin-top: 25px;
+    font-size: 20px;
+  }
+
+  body.LoginUserVisible {
+    margin-top: 15px;
+    margin-bottom: -10px;
+  }
+
+  /* Formulario */
+
+  /* IMAGEM PRINCIPAL */
+  body .BodyForm {
+    background-position: -750px 30px;
+  }
+
+  body .containerBodyNewImg {
+    background-position: -12px 120px;
+  }
+
+  body .BodyForm {
+    height: 100vh;
+    width: 100vw;
+  }
+
+  body .containerBodyNewImg {
+    height: 100vh;
+    width: 112vw;
+  }
+
+  body .BodyForm .containerMaster {
+    width: 720px;
+    height: 100%;
+    margin-left: 55px;
+  }
+
+  .containerBodyNewImg .containerMaster {
+    width: 720px;
+    height: 100%;
+    margin-left: 55px;
+  }
+
+  .containerMaster .login {
+    width: 50%;
+    height: 75vh;
+
+  }
+
+  .containerMaster .cadastro {
+    width: 50%;
+    height: 75vh;
+
+  }
+
+  .containerMaster .welcome_back {
+    width: 50%;
+    height: 75vh;
+
+  }
+
+  .containerMaster .create_account {
+    width: 50%;
+    height: 75vh;
+  }
+
+  .containerMaster .create_account button {
+    width: 38%;
+    padding: 8px;
+    margin-bottom: 20px;
+  }
 }
