@@ -4,7 +4,7 @@
 }
 
 .bodyChat {
-  min-height: 200vh;
+  max-height: 100vh;
   background-color: var(--bg-white);
 }
 
@@ -88,7 +88,20 @@ p {
   display: flex;
   flex-direction: column;
   width: 36%;
-  background-color: var(--bg-white);
+  background-color: var(--bg-black);
+  max-height: 85vh;
+  overflow-y: scroll;
+  overflow-x: hidden;
+}
+.aside::-webkit-scrollbar {
+  width: 5px;
+}
+.aside::-webkit-scrollbar-track {
+  background: transparent;
+  padding: 2px;
+}
+.aside::-webkit-scrollbar-thumb {
+  background-color: var(--bg-gray);
 }
 
 .aside img {
@@ -104,12 +117,12 @@ p {
 .aside button {
   border: none;
   padding: 10px 20px;
-  font-size: 12px;
+  font-size: 18px;
   font-weight: bold;
   border-radius: 5px;
   transition: background-color 0.3s ease-in-out;
   margin: 2px;
-  width: 70%;
+  width: 60%;
   padding: 15px;
   background-color: var(--bg-white);
   color: var(--msg);
@@ -145,13 +158,24 @@ p {
 
 /*  CHAT */
 .chatContainer {
-  border: 0.5px solid white;
-  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
-  min-height: 85vh;
-  /* overflow-y: scroll; */
-  width: 64%;
+  /* border: 0.5px solid white; */
+  max-height: 85vh;
+  overflow-y: scroll;
+  overflow-x: hidden;
+  width: 50%;
   background-color: var(--bg-black);
 }
+.chatContainer::-webkit-scrollbar {
+  width: 5px;
+}
+.chatContainer::-webkit-scrollbar-track {
+  background: transparent;
+  padding: 2px;
+}
+.chatContainer::-webkit-scrollbar-thumb {
+  background-color: var(--bg-gray);
+}
+
 
 .chatContainer .space {
   margin-left: 25px;
@@ -159,19 +183,15 @@ p {
   margin-top: 25px;
   min-height: 100vh;
   width: 100%;
-
 }
 
 .chatMessageV {
   background-color: var(--bg-black);
-  color: var(--bgGreen);
-  padding: 15px;
-  width: 85%;
-  font-family: 'Cormorant Garamond', serif;
-  font-family: 'Playfair Display', serif;
+  color: var(--bgChat);
+  width: 100%;
+  font-family: 'Arial', serif;
   letter-spacing: 1px;
-  font-size: 22px;
- 
+  font-size: 17px;
 }
 
 .chatMessageHidden {
@@ -185,6 +205,7 @@ p {
 /*DARK MOD */
 :root.dark-theme {
   --bgGreen: #e20000;
+  --bgChat: #e20000;
   --bg-white: #050303;
   --bg-gray: #4D4D4D;
   --bg-dark: #1E1E1E;
@@ -195,37 +216,41 @@ p {
 
 /* LIGHT MODE */
 :root.light-theme {
-  --bgGreen: #00FF00;
+  --bgGreen: #c5c5c5;
+  --bgChat: #c5c5c5;
   --bg-white: #fff;
   --bg-gray: #ccc;
   --bg-dark: #444444;
-  --bg-black: black;
-  --btn-green-hover: #bfff00;
+  --bg-black: #1b1b1b;
+  --btn-green-hover: #c5c5c5;
   --msg: #000;
 }
 
 .theme {
-  --bgGreen: #00FF00;
+  --bgGreen: #c5c5c5;
+  --bgChat: #c5c5c5;
   --bg-white: #fff;
   --bg-gray: #ccc;
   --bg-dark: #444444;
-  --bg-black: black;
-  --btn-green-hover: #bfff00;
+  --bg-black: #1b1b1b;
+  --btn-green-hover: #c5c5c5;
   --msg: #000;
 }
 
 .light-theme {
-  --bgGreen: #00FF00;
+  --bgGreen: #c5c5c5;
+  --bgChat: #c5c5c5;
   --bg-white: #fff;
   --bg-gray: #ccc;
   --bg-dark: #444444;
-  --bg-black: black;
-  --btn-green-hover: #bfff00;
+  --bg-black: #1b1b1b;
+  --btn-green-hover: #c5c5c5;
   --msg: #000;
 }
 
 .dark-theme {
   --bgGreen: #e20000;
+  --bgChat: #e20000;
   --bg-white: #050303;
   --bg-gray: #4D4D4D;
   --bg-dark: #1E1E1E;

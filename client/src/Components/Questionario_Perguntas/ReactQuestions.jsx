@@ -8,7 +8,12 @@ function ReactQuestions() {
         q2: '',
         q3: '',
         q4: '',
-        q5: ''
+        q5: '',
+        q6: '',
+        q7: '',
+        q8: '',
+        q9: '',
+        q10: ''
     });
     useEffect(() => {
         Axios.get('http://localhost:3001/perguntas')
@@ -31,7 +36,7 @@ function ReactQuestions() {
         }));
     }
     const checkAnswers = () => {
-        answerUser.push(answers.q1, answers.q2, answers.q3, answers.q4, answers.q5)
+        answerUser.push(answers.q1, answers.q2, answers.q3, answers.q4, answers.q5, answers.q6, answers.q7, answers.q8, answers.q9, answers.q10)
         let correctCount = 0;
         for (let i = 0; i < answerDB.length; i++) {
             if (answerDB[i] === answerUser[i]) {
@@ -39,9 +44,9 @@ function ReactQuestions() {
             }
         }
         if (correctCount === 5) {
-            alert(`Parabéns! Você acertou todas as respostas! Sua note é : ${correctCount * 2}`);
+            alert(`Parabéns! Você acertou todas as respostas! Sua note é : ${correctCount}`);
         } else if (correctCount > 0) {
-            alert(`Você acertou ${correctCount} respostas de 5. Sua note é : ${correctCount * 2}`);
+            alert(`Você acertou ${correctCount} respostas de 10. Sua note é : ${correctCount}`);
         } else {
             alert('Que pena, você não acertou nenhuma resposta.');
         }
@@ -51,24 +56,32 @@ function ReactQuestions() {
         checkAnswers();
     };
     return (
-        <div className='Questions typewriter' id='text'>
+        <div className='Questions typewriter radio-container' id='text'>
             {questions.map((question, index) => (
-                <div > <h2>Pergunta {index+1}:</h2>
-                    <p>{question.pergunta}</p>
+                <div >
+                    <p>{`${(index + 1)}- ${question.pergunta}`}</p>
                     <div className='labelRadio'>
-                <span className='QuestionsType'>
-                    <input type="radio" name={`q${index+1}`} value="A" checked={`${index+1}-pergunta` === 'A'} onChange={() => handleAnswerChange(`q${index+1}`, 'A')} />
-                    <span>{question.alternativa1}</span>
-                </span>
-                <span className='QuestionsType'>
-                    <input type="radio" name={`q${index+1}`} value="B" checked={`${index+1}-pergunta` === 'B'} onChange={() => handleAnswerChange(`q${index+1}`, 'B')} />
-                    <span>{question.alternativa2}</span>
-                </span>
-                <span className='QuestionsType'>
-                    <input type="radio" name={`q${index+1}`} value="C" checked={`${index+1}-pergunta` === 'C'} onChange={() => handleAnswerChange(`q${index+1}`, 'C')} />
-                    <span>{question.alternativa3}</span>
-                </span>
-            </div>
+                        <span className='QuestionsType'>
+                            <input type="radio" name={`q${index + 1}`} value="A" onChange={() => handleAnswerChange(`q${index + 1}`, 'A')} />
+                            <span>{question.alternativa1}</span>
+                        </span>
+                        <span className='QuestionsType'>
+                            <input type="radio" name={`q${index + 1}`} value="B" onChange={() => handleAnswerChange(`q${index + 1}`, 'B')} />
+                            <span>{question.alternativa2}</span>
+                        </span>
+                        <span className='QuestionsType'>
+                            <input type="radio" name={`q${index + 1}`} value="C" onChange={() => handleAnswerChange(`q${index + 1}`, 'C')} />
+                            <span>{question.alternativa3}</span>
+                        </span>
+                        <span className='QuestionsType'>
+                            <input type="radio" name={`q${index + 1}`} value="D" onChange={() => handleAnswerChange(`q${index + 1}`, 'C')} />
+                            <span>{question.alternativa4}</span>
+                        </span>
+                        <span className='QuestionsType'>
+                            <input type="radio" name={`q${index + 1}`} value="E" onChange={() => handleAnswerChange(`q${index + 1}`, 'C')} />
+                            <span>{question.alternativa5}</span>
+                        </span>
+                    </div>
                 </div>
             ))}
             <button onClick={handleSubmit}>Verificar Respostas</button>
