@@ -62,8 +62,9 @@ app.post('/login', (req, res) => {
 })
 app.get('/perguntas', (req, res) => {
   // Executa a consulta no banco de dados
-  db.query('SELECT pergunta,alternativa1, alternativa2, alternativa3, alternativa4, alternativa5, resposta FROM perguntas', (err, results) => {
+  db.query('SELECT pergunta,alternativa1, alternativa2, alternativa3, alternativa4, alternativa5, resposta FROM perguntas ORDER BY RAND() LIMIT 10', (err, results) => {
     if (err) throw err;
+    console.log(results.length)
     res.send(results);
   });
 });

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, Fragment } from 'react';
 import '../../assets/css/ReactQuestions.css'
 import Axios from 'axios'
 function ReactQuestions() {
@@ -58,31 +58,31 @@ function ReactQuestions() {
     return (
         <div className='Questions typewriter radio-container' id='text'>
             {questions.map((question, index) => (
-                <div >
+                <Fragment >
                     <p>{`${(index + 1)}- ${question.pergunta}`}</p>
                     <div className='labelRadio'>
                         <span className='QuestionsType'>
-                            <input type="radio" name={`q${index + 1}`} value="A" onChange={() => handleAnswerChange(`q${index + 1}`, 'A')} />
+                            <input type="radio" name={`q${index + 1}`} value="a" onChange={() => handleAnswerChange(`q${index + 1}`, 'a')} />
                             <span>{question.alternativa1}</span>
                         </span>
                         <span className='QuestionsType'>
-                            <input type="radio" name={`q${index + 1}`} value="B" onChange={() => handleAnswerChange(`q${index + 1}`, 'B')} />
+                            <input type="radio" name={`q${index + 1}`} value="b" onChange={() => handleAnswerChange(`q${index + 1}`, 'b')} />
                             <span>{question.alternativa2}</span>
                         </span>
                         <span className='QuestionsType'>
-                            <input type="radio" name={`q${index + 1}`} value="C" onChange={() => handleAnswerChange(`q${index + 1}`, 'C')} />
+                            <input type="radio" name={`q${index + 1}`} value="c" onChange={() => handleAnswerChange(`q${index + 1}`, 'c')} />
                             <span>{question.alternativa3}</span>
                         </span>
                         <span className='QuestionsType'>
-                            <input type="radio" name={`q${index + 1}`} value="D" onChange={() => handleAnswerChange(`q${index + 1}`, 'C')} />
+                            <input type="radio" name={`q${index + 1}`} value="d" onChange={() => handleAnswerChange(`q${index + 1}`, 'd')} />
                             <span>{question.alternativa4}</span>
                         </span>
                         <span className='QuestionsType'>
-                            <input type="radio" name={`q${index + 1}`} value="E" onChange={() => handleAnswerChange(`q${index + 1}`, 'C')} />
+                            <input type="radio" name={`q${index + 1}`} value="e" onChange={() => handleAnswerChange(`q${index + 1}`, 'e')} />
                             <span>{question.alternativa5}</span>
                         </span>
                     </div>
-                </div>
+                </Fragment>
             ))}
             <button onClick={handleSubmit}>Verificar Respostas</button>
         </div>
