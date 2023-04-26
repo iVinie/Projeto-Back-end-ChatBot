@@ -12,6 +12,7 @@ import { typeWriter } from '../../assets/js/typeWriter';
 import '../../assets/css/ChatBot.css'
 import '../../assets/css/responsive.css'
 import ReactQuestions from '../Questionario_Perguntas/ReactQuestions.jsx';
+import Axios from 'axios'
 
 function Robot() {
   const [texto, setTexto] = useState('Ola! Seja bem vindo a prova de back-end');
@@ -72,11 +73,17 @@ function Robot() {
   const [questionnaire, setQuestionnaire] = useState(null);
   const [chatMessage, setChatMessage] = useState('chatMessageV');
   const [chatHidden, setChatHidden] = useState('chatMessageHidden');
-  const teste = () => {
-    setQuestionnaire(<ReactQuestions />);
-    setChatMessage('chatMessageHidden');
-    setChatHidden('chatMessageV')
-    
+  const prova = () => {
+    Axios.post("http://localhost:3001/verifique", {
+      cpf_user: 'CPF'
+    }).then(() => {
+      setQuestionnaire(<ReactQuestions />);
+      setChatMessage('chatMessageHidden');
+      setChatHidden('chatMessageV')
+    })
+      .catch(() => {
+        alert("VOCÊ JÁ FEZ A PROVA, SEU SAFADO")
+      })
   }
   const [botaoClicado, setBotaoClicado] = useState(false);
   const [imgRb, setImgRb] = useState('roboJpg');
@@ -115,7 +122,7 @@ function Robot() {
               </button>
             </div>
             <div class='btn_chat'>
-              <button onClick={teste}>
+              <button onClick={prova}>
                 <FaNodeJs className='icons' />
                 Iniciar Prova!
               </button>
