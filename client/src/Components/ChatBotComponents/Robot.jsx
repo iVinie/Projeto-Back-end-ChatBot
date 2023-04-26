@@ -9,7 +9,10 @@ import '../../assets/css/ChatBot.css'
 import '../../assets/css/responsive.css'
 import ReactQuestions from '../Questionario_Perguntas/ReactQuestions.jsx';
 import Axios from 'axios'
+import { useParams } from 'react-router-dom'
 function Robot() {
+  let { cpf } = useParams()
+  let { name } = useParams()
   const [texto, setTexto] = useState('Ola! Seja bem vindo a prova de back-end');
   const MaquinaDeEscrever = useRef(null);
   useEffect(() => {
@@ -68,7 +71,7 @@ function Robot() {
   const [chatHidden, setChatHidden] = useState('chatMessageHidden');
   const prova = () => {
     Axios.post("http://localhost:3001/verifique", {
-      cpf_user: 'CPF'
+      cpf_user: cpf
     }).then(() => {
       setQuestionnaire(<ReactQuestions />);
       setChatMessage('chatMessageHidden');
@@ -90,6 +93,7 @@ function Robot() {
       <div className={`bodyChat ${theme === "light" ? "light-theme" : "dark-theme"}`}>
         <div className={`ContainerM`}>
           <div className='aside'>
+            <p className="name">{name}</p>
             <img src={imgRb === 'roboJpg' ? roboJpg : roboGif} alt="Robô" onClick={() => handleThemeChange()} />
             <div class='btn_chat'>
               <button disabled={botaoClicado}

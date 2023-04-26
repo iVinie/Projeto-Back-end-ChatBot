@@ -5,7 +5,7 @@ function timeLinkTwo(name, cpf) {
     cpf: cpf
   }).then((res) => {
     setTimeout(() => {
-      window.location.href = `http://localhost:3000/chat/${cpf}`;
+      window.location.href = `http://localhost:3000/chat/${cpf}/${name}`;
   },2000);
   }).catch((error) => {
     console.error(error)
