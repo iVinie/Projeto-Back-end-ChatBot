@@ -24,6 +24,7 @@ p {
 .ContainerM {
   display: flex;
   flex-wrap: wrap;
+  max-height: 100vh;
 }
 
 .title {
@@ -88,7 +89,7 @@ p {
   align-items: center;
   display: flex;
   flex-direction: column;
-  width: 36%;
+  width: 35%;
   background-color: var(--bg-black);
   max-height: 100vh;
   overflow-y: scroll;
@@ -165,7 +166,7 @@ p {
   border: 0.5px solid var(--bgChat);
   overflow-y: scroll;
   overflow-x: hidden;
-  width: 50%;
+  width: 55%;
   background-color: var(--bg-black);
 }
 .chatContainer::-webkit-scrollbar {

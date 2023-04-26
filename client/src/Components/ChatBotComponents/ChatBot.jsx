@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React from 'react';
 import '../../assets/css/ChatBot.css'
 import '../../assets/css/responsive.css'
 import Robot from './Robot';

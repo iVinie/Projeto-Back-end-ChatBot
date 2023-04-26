@@ -43,13 +43,22 @@ function ReactQuestions() {
                 correctCount++
             }
         }
-        if (correctCount === 5) {
-            alert(`Parabéns! Você acertou todas as respostas! Sua note é : ${correctCount}`);
-        } else if (correctCount > 0) {
-            alert(`Você acertou ${correctCount} respostas de 10. Sua note é : ${correctCount}`);
-        } else {
-            alert('Que pena, você não acertou nenhuma resposta.');
-        }
+        Axios.post("http://localhost:3001/save", {
+            valor: correctCount,
+            user_cpf: 'CPF',
+            disciplina_nome: 'Back-End'
+        }).then((response) => {
+            if (correctCount === 10) {
+                alert(`Parabéns! Você acertou todas as respostas! Sua note é : ${correctCount}`);
+            } else if (correctCount > 0) {
+                alert(`Você acertou ${correctCount} respostas de 10. Sua note é : ${correctCount}`);
+            } else {
+                alert('Que pena, você não acertou nenhuma resposta.');
+            }
+        })
+            .catch((error) => {
+                alert("VOCÊ JÁ FEZ A PROVA, SEU SAFADO")
+            })
     }
     const handleSubmit = (event) => {
         event.preventDefault();

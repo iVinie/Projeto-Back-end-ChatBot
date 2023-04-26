@@ -1,4 +1,4 @@
-import { BrowserRouter as Router, Route, Link, Routes } from "react-router-dom";
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import Formulario from "./Components/FormularioComponents/Formulario";
 import ChatBot from "./Components/ChatBotComponents/ChatBot";
 import Home from "./Components/Home/Home";

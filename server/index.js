@@ -63,5 +63,35 @@ app.get('/perguntas', (req, res) => {
     res.send(results);
   });
 });
-const PORT = 3001
-app.listen(PORT, () => console.log(`Servidor Express rodando na porta ${PORT}`))
+app.post('/save', (req, res) => {
+  const { valor } = req.body
+  const { user_cpf } = req.body
+  const { disciplina_nome } = req.body
+
+  db.query(
+    `SELECT * FROM notas WHERE user_cpf = '${user_cpf}'`,
+    (err, result) => {
+      if (err) {
+        console.log(err)
+        res.status(500).send('Erro ao verificar usuário.')
+      }
+        if (result.length > 0) {
+          res.status(409).send(result)
+        } else {
+          db.query(
+            `INSERT INTO notas (valor, user_cpf, disciplina_nome) VALUES ("${valor}", "${user_cpf}", "${disciplina_nome}")`,
+            (err, result) => {
+              if (err) {
+                console.log(err);
+                res.status(500).send('Erro ao registrar a nota.')
+              } else {
+                res.status(201).send(result)
+              }
+            }
+          )
+      }
+    }
+  )
+    })
+  const PORT = 3001
+  app.listen(PORT, () => console.log(`Servidor Express rodando na porta ${PORT}`))

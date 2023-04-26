@@ -12,8 +12,7 @@ import { typeWriter } from '../../assets/js/typeWriter';
 import '../../assets/css/ChatBot.css'
 import '../../assets/css/responsive.css'
 import ReactQuestions from '../Questionario_Perguntas/ReactQuestions.jsx';
-import Estudo from '../Questionario_Perguntas/EstudoDeperguntasAleatorias';
-import Axios from 'axios'
+
 function Robot() {
   const [texto, setTexto] = useState('Ola! Seja bem vindo a prova de back-end');
   const MaquinaDeEscrever = useRef(null);
@@ -59,7 +58,7 @@ function Robot() {
     setChatMessage('chatMessageV');
     setChatHidden('chatMessageHidden');
     LinguagensAudio.play();
-    setTexto('ProvaBot: As linguagens utilizadas nesse projeto foram: Biblioteca React + TailWind + MongoDB + JavaScript + Css');
+    setTexto('ProvaBot: As linguagens utilizadas nesse projeto foram: Biblioteca React, TailWind, MySQL, JavaScript, Css e Node.JS');
     setBotaoClicado(true);
     setImgRb('roboGif');
     setTimeout(() => {
@@ -70,16 +69,14 @@ function Robot() {
     }, 7500)
   }
 
-  const [estudos, setEstudos] = useState(null);
   const [questionnaire, setQuestionnaire] = useState(null);
   const [chatMessage, setChatMessage] = useState('chatMessageV');
   const [chatHidden, setChatHidden] = useState('chatMessageHidden');
   const teste = () => {
     setQuestionnaire(<ReactQuestions />);
-    // setEstudos(<Estudo />);
     setChatMessage('chatMessageHidden');
     setChatHidden('chatMessageV')
-    // alert('Boa sorte na prova! Lembre-se de que esta questão vale um ponto. Segundo o professor Diego, quem acertar mais questões ganhará um chocolate.Leia com atenção e dê o seu melhor!"');
+    
   }
   const [botaoClicado, setBotaoClicado] = useState(false);
   const [imgRb, setImgRb] = useState('roboJpg');
