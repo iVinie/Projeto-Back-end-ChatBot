@@ -5,8 +5,8 @@
 
 .bodyChat {
   max-height: 100vh;
-  background-color: var(--bg-white);
-}
+  background-color: var(--bg-black);
+} 
 
 .title .msg_ChatBot {
   text-align: center;
@@ -159,8 +159,10 @@ p {
 
 /*  CHAT */
 .chatContainer {
-  /* border: 0.5px solid white; */
-  max-height: 100vh;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  max-height: 97.2vh;
+  border: 0.5px solid var(--bgChat);
   overflow-y: scroll;
   overflow-x: hidden;
   width: 50%;
@@ -218,33 +220,33 @@ p {
 /* LIGHT MODE */
 :root.light-theme {
   --bgGreen: #c5c5c5;
-  --bgChat: #c5c5c5;
+  --bgChat: #181818;
   --bg-white: #fff;
   --bg-gray: #ccc;
   --bg-dark: #444444;
-  --bg-black: #1b1b1b;
+  --bg-black: #ffffff;
   --btn-green-hover: #c5c5c5;
   --msg: #000;
 }
 
 .theme {
   --bgGreen: #c5c5c5;
-  --bgChat: #c5c5c5;
+  --bgChat: #181818;
   --bg-white: #fff;
   --bg-gray: #ccc;
   --bg-dark: #444444;
-  --bg-black: #1b1b1b;
+  --bg-black: #ffffff;
   --btn-green-hover: #c5c5c5;
   --msg: #000;
 }
 
 .light-theme {
   --bgGreen: #c5c5c5;
-  --bgChat: #c5c5c5;
+  --bgChat: #181818;
   --bg-white: #fff;
   --bg-gray: #ccc;
   --bg-dark: #444444;
-  --bg-black: #1b1b1b;
+  --bg-black: #ffffff;
   --btn-green-hover: #c5c5c5;
   --msg: #000;
 }

@@ -1,6 +1,5 @@
 /* * Resolução Full HD - GRAU TECNICO */
-
-@media screen and (max-width: 1920px) {
+@media screen and (max-width: 2652px) {
   .containerMaster {
     height: 540px;
     margin-top: 180px;
@@ -23,18 +22,6 @@
   }
 
   /* Cabeçalho ChatBot*/
-  .HeaderLinks {
-    height: 10vh;
-    margin: auto;
-    width: 65%;
-    margin-top: 55px;
-  }
-
-  .HeaderLinks img {
-    width: 55%;
-    margin-top: 10px;
-  }
-
   .containerMaster {
     margin-top: 115px;
     margin-right: 500px;
@@ -48,9 +35,6 @@
     background-position: -420px 30px;
   }
 
-  .LinkChat {
-    font-size: 30px;
-  }
 
   .LoginUser {
     margin-top: 55px;
@@ -59,7 +43,7 @@
 
   /* Cabeçalho Formulario*/
   .aside {
-    width: 36%;
+    width: 35%;
   }
 
   .aside img {
@@ -76,98 +60,6 @@
   .EsqueciSenha button {
     margin-top: 65px;
   }
-
-  /* RESPONSIVIDADE 1920 PARA O CABEÇALHO  */
-
-  .HeaderLinks .LogoInitial img {
-    width: 25%;
-    margin-left: 435px;
-  }
-
-  .BodyLinks {
-    background-color: var(--bg-header);
-    width: 1920px;
-  }
-
-  .HeaderLinks {
-    display: flex;
-    justify-content: space-between;
-    width: 57%;
-    margin: auto;
-    height: 13vh;
-    align-items: center;
-    font-size: 40px;
-    font-family: 'Lobster', cursive;
-    margin-top: 5px;
-  }
-
-
-  .HeaderLinks .LogoInitial img {
-    width: 25%;
-    margin-left: 435px;
-  }
-
-  .HeaderLinks .LogoInitialVisible img {
-    width: 35%;
-    margin-left: 25px;
-    transition: all 1.3s ease-in;
-  }
-
-  .LinkChat {
-    font-size: 29px;
-    justify-content: center;
-    display: none;
-  }
-
-  .LinkChatVisible {
-    font-size: 29px;
-    display: flex;
-    justify-content: center;
-  }
-
-  .LinkChat .Link {
-    margin: 0px 7px 0px 7px;
-    text-decoration: none;
-    color: var(--colorLinks);
-    transition: all 0.2s ease-in;
-    background-image: linear-gradient(90deg, rgb(41, 40, 40), var(--bg-white));
-    background-repeat: no-repeat;
-    background-size: 0% 2px;
-    background-position: center bottom;
-    padding: 10px;
-  }
-
-  .LinkChatVisible .Link {
-    margin: 0px 7px 0px 7px;
-    text-decoration: none;
-    color: var(--colorLinks);
-    transition: all 0.2s ease-in;
-    background-image: linear-gradient(90deg, rgb(41, 40, 40), var(--bg-gray));
-    background-repeat: no-repeat;
-    background-size: 0% 2px;
-    background-position: center bottom;
-    padding: 10px;
-  }
-
-
-  .LinkChat .Link:nth-last-child(1) {
-    margin-right: -45px;
-  }
-
-  .LinkChatVisible .Link:nth-last-child(1) {
-    margin-right: -45px;
-  }
-
-  .LinkChat .Link:hover {
-    color: var(--bgGreen);
-    background-size: 75% 3px;
-  }
-
-  .LinkChatVisible .Link:hover {
-    color: var(--bgGreen);
-    background-size: 75% 3px;
-  }
-
 
   .LoginUser {
     margin-bottom: 35px;
@@ -256,17 +148,7 @@
   } */
 
   /* Cabeçalho */
-  .HeaderLinks {
-    height: 10vh;
-    margin: auto;
-    width: 50%;
-  }
-
-  .HeaderLinks img {
-    width: 35%;
-    margin-top: 10px;
-  }
-
+  
   .containerMaster {
     margin-top: 115px;
   }
@@ -290,7 +172,7 @@
     align-items: center;
     display: flex;
     flex-direction: column;
-    width: 36%;
+    width: 35%;
     background-color: var(--bg-black);
   }
 
@@ -300,35 +182,11 @@
 
   /* cabeçaho */
 }
-
 /* Responsividade 720PX */
 
 @media screen and (max-width: 720px) {
 
   /* CABEÇALHO */
-  body .HeaderLinks .LogoInitial img {
-    width: 55%;
-    margin-left: 222px;
-
-  }
-
-  body .BodyLinks {
-    width: 810px;
-  }
-
-  body .HeaderLinks{
-    margin-left: 127px;
-  }
-  body .HeaderLinks .LogoInitialVisible img {
-    width: 85%;
-    margin-top: 10px;
-    margin-left: -25px;
-  }
-
-  body.LinkChatVisible {
-    margin-top: 25px;
-    font-size: 20px;
-  }
 
   body.LoginUserVisible {
     margin-top: 15px;

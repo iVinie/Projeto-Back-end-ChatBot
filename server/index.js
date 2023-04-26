@@ -37,23 +37,19 @@ app.post('/register', (req, res) => {
   )
 })
 app.post('/login', (req, res) => {
-  console.log('estou em 1')
   const { cpf, senha } = req.body
   if (!cpf || !senha) {
-    console.log('estou em 2')
     res.status(400).send({ mensagem: 'CPF e senha são obrigatórios' })
     return;
   }
   const query = 'SELECT * FROM users WHERE cpf = ? AND senha = ?'
   db.query(query, [cpf, senha], (error, results) => {
     if (error) {
-      console.log('estou em 3')
       console.error(error)
       res.status(500).send({ mensagem: 'Erro ao buscar usuário no banco de dados' })
       return;
     }
     if (results.length > 0) {
-      console.log('estou em 4')
       res.send({ cpf: results[0].cpf, nome: results[0].nome })
     } else {
       res.status(401).send({ mensagem: 'CPF ou senha incorretos' })
@@ -64,7 +60,6 @@ app.get('/perguntas', (req, res) => {
   // Executa a consulta no banco de dados
   db.query('SELECT pergunta,alternativa1, alternativa2, alternativa3, alternativa4, alternativa5, resposta FROM perguntas ORDER BY RAND() LIMIT 10', (err, results) => {
     if (err) throw err;
-    console.log(results.length)
     res.send(results);
   });
 });
