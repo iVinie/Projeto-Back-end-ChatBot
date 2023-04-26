@@ -83,7 +83,7 @@ const Formulario = () => {
         const nameRegex = /^[A-Z][a-z]+([.'-][A-Za-z]+)*( [A-Za-z]+)+$/
         if (!user.name) return setStatus({ type: "error", mensagem: "Campos Nome Não preenchido" });
         if (user.name.length < 10) return setStatus({ type: "error", mensagem: "Nome Menor que 10 caracteres!" });
-        if (!nameRegex.test(user.name)) return setStatus({ type: "error", mensagem: "Nome invalido!" })
+        if (!nameRegex.test(user.name)) return setStatus({ type: "error", mensagem: "Nome e Sobrenome" })
         if (!isValidCpf) {
             setStatus({ type: "error", mensagem: "CPF inválido!" });
             return false;
@@ -282,7 +282,7 @@ const Formulario = () => {
                                                 type="text"
                                                 name="name"
                                                 placeholder="Nome"
-                                                onChange={valueInput} maxLength="10" />
+                                                onChange={valueInput} maxLength="50" />
                                             <input
                                                 type="text"
                                                 id="cpf"
