@@ -11,8 +11,6 @@
   --msg: #fff;
   --bg-dark: #1E1E1E;
 }
-
-/* LIGHT MODE */
 :root.light-theme {
   --bg-white: rgb(255, 255, 255);
   --border-color: rgb(0, 0, 0);
@@ -27,7 +25,6 @@
   --bg-gray: #ccc;
   --bg-dark: #444444;
 }
-
 .theme {
   --bg-white: rgb(255, 255, 255);
   --border-color: rgb(0, 0, 0);
@@ -42,7 +39,6 @@
   --bg-gray: #ccc;
   --bg-dark: #444444;
 }
-
 .light-theme {
   --bg-white: rgb(255, 255, 255);
   --border-color: rgb(0, 0, 0);
@@ -57,7 +53,6 @@
   --bg-gray: #c5c5c5;
   --bg-dark: #444444;
 }
-
 .dark-theme {
   --bg-white: #0c0d0e;
   --border-color: #fff;
@@ -71,21 +66,15 @@
   --msg: #fff;
   --bg-dark: #1E1E1E;
 }
-
-/* Nesse Style CSS Vou esta fazendo todo o Styllo inicial do Projeto
-  Login & Cadastro */
 * {
   margin: 0;
   padding: 0;
 }
-
-/* ANIMAÇÃO DE EFETUAÇÃO DO LOGIN */
 .Loading_Form {
   text-align: center;
   background-color: rgb(2, 2, 2);
   min-height: 100vh;
 }
-
 .Loading_Form img {
   width: 40%;
   margin: auto;
@@ -93,21 +82,17 @@
   background-color: gray;
   animation: sumireVoltar 2s infinite;
 }
-
 @keyframes sumireVoltar {
   0% {
     padding: 100px;
   }
-
   50% {
     padding: 0;
   }
-
   100% {
     padding: 100px;
   }
 }
-
 .BodyForm {
   background-image: url(../img/robo_bom.jpg);
   background-position: -598px -15px;
@@ -116,7 +101,6 @@
   background-color: var(--background-color-body);
   height: 100vh;
 }
-
 .containerBodyNewImg {
   background-image: url(../img/robo_mal.jpg);
   background-position: -600px -15px;
@@ -126,7 +110,6 @@
   transition: all 2.3s ease-in;
   animation-duration: 1.8s;
 }
-
 .Loading {
   background-color: #1f212d;
   height: 100vh;
@@ -137,38 +120,25 @@
   margin: auto;
   justify-content: center;
 }
-
 .Loading img {
   background-color: #1f212d;
 }
-
 .LoadingDown {
   animation: backOutUp;
   animation-duration: 2.18s;
   background-color: #1f212d;
 }
-
-/* HEADER DO FORMULARIO */
-
-/* ANIMAÇÃO DE ESCREVER */
 .typewriter {
   overflow: hidden;
-  /* esconde todo o conteúdo da tag */
   border-right: .15em solid var(--border-color);
-  /* adiciona um cursor que "digita" a tag */
   white-space: nowrap;
-  /* impede que a tag seja quebrada em várias linhas */
   margin: 0 auto;
-  /* centraliza a tag horizontalmente */
   letter-spacing: .15em;
-  /* espaço entre as letras */
   animation:
     typing 3.5s steps(30, end),
     blink-caret .75s step-end infinite;
-  /* define a animação da tag */
 }
 
-/* Define as animações */
 @keyframes typing {
   from {
     width: 0
@@ -190,16 +160,8 @@
     border-color: var(--border-color)
   }
 }
-
-
-
-
-
-
 .containerMaster {
   display: flex;
-  /* animation: bounce;
-    animation-duration: 2s; */
   width: 800px;
   margin: auto;
   margin-top: 60px;
@@ -210,16 +172,6 @@
   background-image: var(--background-image);
   margin-right: 200px;
 }
-
-/* INTRODUÇÃO */
-
-/* Estilo para a classe "Welcome" */
-
-
-
-/* CAMPO LOGIN */
-
-
 .login {
   width: 50%;
   height: 80vh;
@@ -230,19 +182,14 @@
   flex-direction: column;
   justify-content: center;
   border-radius: var(--border-radius) 0px 0px var(--border-radius);
-
-
 }
-
 .login h1 {
   font-size: 40px;
   margin: 25px;
   margin-bottom: 20px;
   animation: fadeInDown;
   animation-duration: 0.4s;
-
 }
-
 .login p {
   font-size: 17px;
   font-weight: 200;
@@ -250,7 +197,6 @@
   animation: fadeInDown;
   animation-duration: 0.4s;
 }
-
 input {
   margin: 15px;
   width: 320px;
@@ -258,7 +204,6 @@ input {
   margin-left: auto;
   margin-right: auto;
 }
-
 input[type="text"] {
   padding: 10px;
   border: 1px solid var(--border-color);
@@ -267,7 +212,6 @@ input[type="text"] {
   color: var(--text-color);
   background-color: var(--background-color);
 }
-
 input[type="password"] {
   padding: 10px;
   border: 1px solid var(--border-color);
@@ -276,17 +220,14 @@ input[type="password"] {
   color: var(--text-color);
   background-color: var(--background-color);
 }
-
 input[type="text"]:focus {
   outline: none;
   border-color: var(--primary-color);
 }
-
 input[type="password"]:focus {
   outline: none;
   border-color: var(--primary-color);
 }
-
 .login a {
   text-decoration: none;
   font-size: 17px;
@@ -296,11 +237,9 @@ input[type="password"]:focus {
   transition: 1s;
   display: block;
 }
-
 .login a:hover {
   text-decoration: underline;
 }
-
 .login button {
   background: var(--bg-team-blue);
   color: var(--text-color-white);
@@ -313,15 +252,10 @@ input[type="password"]:focus {
   font-weight: 300;
   font-size: 18px;
 }
-
 .login button:hover {
   cursor: pointer;
   background: var(--bg-team-blue-hover);
 }
-
-
-/* CAMPO CADASTRO */
-
 .cadastro {
   border-radius: 0PX 25px 25px 0px;
   width: 50%;
@@ -335,17 +269,13 @@ input[type="password"]:focus {
   opacity: 1;
   transition: opacity ease 4s;
 }
-
 .texto_invisivel {
   opacity: 0;
   transition: opacity;
 }
-
 .texto_visivel {
   opacity: 1;
 }
-
-
 .cadastro h2 {
   font-size: 35px;
   font-weight: bolder;
@@ -353,16 +283,13 @@ input[type="password"]:focus {
   animation: bounce infinite;
   animation-duration: 1.8s;
   animation-delay: 5000ms;
-
 }
-
 .cadastro p {
   margin: 25px;
   font-size: 17px;
   /* animation: fadeInDown;
   animation-duration: 0.4s; */
 }
-
 .cadastro button {
   width: 50%;
   background-color: transparent;
@@ -374,18 +301,11 @@ input[type="password"]:focus {
   margin: 15px;
   margin-left: auto;
   margin-right: auto;
-  /* animation: fadeInDown;
-  animation-duration: 1.4s; */
 }
-
 .cadastro button:hover {
   cursor: pointer;
   background: var(--bg-team-blue-hover);
 }
-
-
-
-
 .welcome_back {
   border-radius: 25PX 0px 0px 25px;
   width: 50%;
@@ -397,24 +317,20 @@ input[type="password"]:focus {
   flex-direction: column;
   justify-content: center;
 }
-
 .welcome_back .Back {
   margin: 15px;
   animation: fadeInUp;
   animation-duration: 0.2s;
 }
-
 .welcome_back h2 {
   font-size: 35px;
   font-weight: bolder;
   margin: 25px;
 }
-
 .welcome_back p {
   margin: 25px;
   font-size: 17px;
 }
-
 .welcome_back button {
   width: 45%;
   background-color: transparent;
@@ -428,22 +344,15 @@ input[type="password"]:focus {
   margin-right: auto;
   display: block;
 }
-
 .welcome_back button:hover {
   cursor: pointer;
   background: var(--bg-team-blue-hover);
 }
-
-/* Estilos para o ícone do GitHub */
 .welcome_back .github_icon {
   font-size: 25px;
   float: left;
   margin: auto;
-
 }
-
-
-
 .create_account {
   width: 50%;
   height: 80vh;
@@ -454,35 +363,24 @@ input[type="password"]:focus {
   flex-direction: column;
   justify-content: center;
   border-radius: 0PX 25px 25px 0px;
-
 }
-
 .create_account h1 {
   font-size: 40px;
   margin: 25px;
   margin-bottom: 30px;
-
-  /* animation: bounceInDown;
-  animation-duration: 0.5s; */
 }
-
 .create_account p {
   font-size: 15px;
   font-weight: 800;
-
 }
-
-
 .create_account p:nth-of-type(2) {
   animation: bounceInDown;
   animation-duration: 0.7s;
 }
-
 .create_account p:nth-of-type(3) {
   animation: bounceInDown;
   animation-duration: 0.7s;
 }
-
 .create_account a {
   text-decoration: none;
   font-size: 17px;
@@ -493,12 +391,9 @@ input[type="password"]:focus {
   animation: bounceInDown;
   animation-duration: 0.8s;
 }
-
 .create_account a:hover {
   text-decoration: underline;
-
 }
-
 .create_account button {
   background: var(--bg-team-blue);
   color: var(--text-color-white);
@@ -510,88 +405,61 @@ input[type="password"]:focus {
   margin-bottom: 10px;
   font-weight: 300;
   font-size: 16px;
-  /* animation: fadeInDown;
-  animation-duration: 1.30s; */
-
 }
-
 .create_account button:hover {
   background: var(--bg-team-blue-hover);
   cursor: pointer;
 }
-
-/* Estilo para as classes que controlam a visibilidade dos formulários */
-
 .oculto {
   display: none;
 }
-
 .visivel {
   display: flex;
 }
-
 .hidden {
   display: none;
 }
-
 .visible {
   display: flex;
 }
-
-
-/* Animation dos Slides */
-
 .SliderRight {
   animation-name: slide_right;
   animation-duration: 0.5s;
   animation-timing-function: linear;
   animation-fill-mode: forwards;
   border-radius: 25PX 0px 0px 25px;
-
 }
-
 @keyframes slide_right {
   from {
     margin-left: 0%;
   }
-
   to {
     margin-left: -100%;
   }
 }
-
 .SliderLeft {
   animation-name: slide_left;
   animation-duration: 0.5s;
   animation-timing-function: linear;
   animation-fill-mode: forwards;
   border-radius: 0PX 25px 25px 0px;
-
 }
-
 @keyframes slide_left {
   from {
     margin-left: 0%;
   }
-
   to {
     margin-left: 50%;
   }
 }
-
 .texto_invisivel {
   opacity: 0;
   transition: opacity 0.5s ease-in-out;
 }
-
 .texto_visivel {
   opacity: 1;
 }
-
-/* Botoes DARKMOD */
-
 .links a {
-
   font-size: 52px;
   display: flex;
   justify-content: space-around;
@@ -603,16 +471,10 @@ input[type="password"]:focus {
   background-color: transparent;
   color: transparent;
 }
-
 .links a:hover {
   color: #250303;
 }
-
-
-/* CAMPO ESQUECI MINHA SENHA */
-
 .EsqueciSenha {
-
   width: 100%;
   height: 80vh;
   background: var(--bg-team-blue);
@@ -626,22 +488,11 @@ input[type="password"]:focus {
   text-align: center;
   clear: both;
   box-shadow: var(--box-shadow);
-
 }
-
-/* EsqueciSenha */
-
-
-.EsqueciSenha img {
-  /* animation: fadeInDown;
-  animation-duration: 0.4s; */
-}
-
 .EsqueciSenha h2 {
   animation: fadeInDown;
   animation-duration: 0.4s;
 }
-
 .EsqueciSenha .Btn_Back {
   float: left;
   width: 13%;
@@ -649,38 +500,29 @@ input[type="password"]:focus {
   margin-left: 55px;
   margin-bottom: -40px;
 }
-
 .EsqueciSenhaHidden {
   display: none;
 }
-
 .textArea {
   opacity: 0;
 }
-
 .FormEmail input {
-
   margin-top: 30px;
   margin-left: auto;
   margin-right: auto;
   color: var(--bg-dark);
 }
-
 .FormEmail input::placeholder {
   color: white;
 }
-
 .FormEmail {
-
   display: flex;
   flex-direction: column;
   align-items: center;
   height: 60%;
   width: 50%;
   margin: auto;
-
 }
-
 .EsqueciSenha button {
   background: var(--bg-team-blue);
   color: var(--text-color-white);
@@ -693,14 +535,11 @@ input[type="password"]:focus {
   font-weight: 300;
   font-size: 18px;
   margin-left: -130px;
-
 }
-
 .EsqueciSenha button:hover {
   cursor: pointer;
   background: var(--bg-team-blue-hover);
 }
-
 .EsqueciSenha img {
   width: 42%;
   margin-left: auto;

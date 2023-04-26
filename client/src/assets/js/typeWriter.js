@@ -1,5 +1,3 @@
-// Efeito de maquina de escrever 
-
 function typeWriter(elemento) {
     const textoArray = elemento.innerHTML.split('');
     elemento.innerHTML = '';

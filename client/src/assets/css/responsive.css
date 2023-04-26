@@ -1,79 +1,59 @@
-/* * Resolução Full HD - GRAU TECNICO */
 @media screen and (max-width: 2652px) {
   .containerMaster {
     height: 540px;
     margin-top: 180px;
   }
-
   .login {
     height: 540px;
   }
-
   .cadastro {
     height: 540px;
   }
-
   .welcome_back {
     height: 540px;
   }
-
   .create_account {
     height: 540px;
   }
-
-  /* Cabeçalho ChatBot*/
   .containerMaster {
     margin-top: 115px;
     margin-right: 500px;
   }
-
   .BodyForm {
     background-position: -420px 30px;
   }
-
   .containerBodyNewImg {
     background-position: -420px 30px;
   }
-
-
   .LoginUser {
     margin-top: 55px;
     margin-right: 55px;
   }
-
-  /* Cabeçalho Formulario*/
   .aside {
     width: 35%;
   }
-
   .aside img {
     width: 60%;
     align-items: center;
     margin-left: 55px;
   }
-
   .chatContainer {
     width: 64%;
   }
-
-  /* esqueci minha senha */
   .EsqueciSenha button {
     margin-top: 65px;
   }
-
   .LoginUser {
     margin-bottom: 35px;
     font-family: 'Lobster', cursive;
     display: none;
   }
-
   .LoginUserVisible {
     margin-bottom: 35px;
     font-family: 'Lobster', cursive;
     display: block;
     margin-top: 45px;
   }
-
   .LoginUser .icon {
     font-size: 25px;
     margin-right: 10px;
@@ -83,13 +63,9 @@
     margin-right: 145px;
     color: var(--colorLinks);
   }
-
   .LoginUser:hover .icon {
     color: var(--bgGreen);
   }
-
-
-
   .LoginUserVisible .icon {
     font-size: 25px;
     margin-right: 10px;
@@ -99,11 +75,9 @@
     margin-right: 145px;
     color: var(--colorLinks);
   }
-
   .LoginUserVisible:hover .icon {
     color: var(--bgGreen);
   }
-
   .LoginUser span {
     float: right;
     margin-right: 45px;
@@ -116,11 +90,9 @@
     border: 1px solid var(--borderColor);
     border-radius: 20px;
   }
-
   .LoginUser:hover span {
     color: var(--bgGreen);
   }
-
   .LoginUserVisible span {
     float: right;
     margin-right: 45px;
@@ -133,22 +105,17 @@
     border: 1px solid var(--borderColor);
     border-radius: 20px;
   }
-
   .LoginUserVisible:hover span {
     color: var(--bgGreen);
   }
 }
-
 @media screen and (max-width: 1380px) {
   .containerMaster {
     width: 800px;
     margin: auto;
     margin-top: 60px;
     align-items: center;
-  } */
-
-  /* Cabeçalho */
-  
+  }
   .containerMaster {
     margin-top: 115px;
   }
@@ -165,9 +132,6 @@
     width: 100%;
     height: 88vh;
   }
-
-  /* ASIDE CHATBOT */
-
   .aside {
     align-items: center;
     display: flex;
@@ -175,80 +139,55 @@
     width: 34%;
     background-color: var(--bg-black);
   }
-
   .aside .btn_chat {
     margin-left: 247px;
   }
-
-  /* cabeçaho */
 }
-/* Responsividade 720PX */
-
 @media screen and (max-width: 720px) {
-
-  /* CABEÇALHO */
-
   body.LoginUserVisible {
     margin-top: 15px;
     margin-bottom: -10px;
   }
-
-  /* Formulario */
-
-  /* IMAGEM PRINCIPAL */
   body .BodyForm {
     background-position: -750px 30px;
   }
-
   body .containerBodyNewImg {
     background-position: -12px 120px;
   }
-
   body .BodyForm {
     height: 100vh;
     width: 100vw;
   }
-
   body .containerBodyNewImg {
     height: 100vh;
     width: 112vw;
   }
-
   body .BodyForm .containerMaster {
     width: 720px;
     height: 100%;
     margin-left: 55px;
   }
-
   .containerBodyNewImg .containerMaster {
     width: 720px;
     height: 100%;
     margin-left: 55px;
   }
-
   .containerMaster .login {
     width: 50%;
     height: 75vh;
-
   }
-
   .containerMaster .cadastro {
     width: 50%;
     height: 75vh;
-
   }
-
   .containerMaster .welcome_back {
     width: 50%;
     height: 75vh;
-
   }
-
   .containerMaster .create_account {
     width: 50%;
     height: 75vh;
   }
-
   .containerMaster .create_account button {
     width: 38%;
     padding: 8px;

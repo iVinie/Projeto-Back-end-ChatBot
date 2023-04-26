@@ -2,46 +2,38 @@
   margin: 0;
   padding: 0;
 }
-
 .bodyChat {
   max-height: 100vh;
   background-color: var(--bg-black);
 } 
-
 .title .msg_ChatBot {
   text-align: center;
   padding: 22px;
   font-size: 45px;
   color: var(--msg);
 }
-
 p {
   text-align: center;
   padding: 12px;
   font-size: 25px;
 }
-
 .ContainerM {
   display: flex;
   flex-wrap: wrap;
   max-height: 100vh;
 }
-
 .title {
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
-
 .bodyChat .title img {
   width: 20%;
 }
-
 .bodyChat .title {
   width: 89%;
   margin: auto;
 }
-
 .bodyChat .title h2 {
   margin-right: -55px;
   font-size: 40px;
@@ -50,41 +42,32 @@ p {
   animation: animacao 5s;
   animation-delay: 5s;
 }
-
 @keyframes flip {
   0% {
     transform: rotateY(0deg);
   }
-
   50% {
     transform: rotateY(180deg);
   }
-
   100% {
     transform: rotateY(0deg);
   }
 }
-
 @keyframes animacao {
   0% {
     transform: rotateY(0deg);
   }
-
   50% {
     transform: rotateY(180deg);
   }
-
   100% {
     transform: rotateY(0deg);
   }
 }
-
 .animacao {
   animation: flip 5s linear;
   animation-fill-mode: forwards;
 }
-
-/* Parte lateral robo e comandos para atividade */
 .aside {
   align-items: center;
   display: flex;
@@ -105,17 +88,14 @@ p {
 .aside::-webkit-scrollbar-thumb {
   background-color: var(--bg-gray);
 }
-
 .aside img {
   width: 80%;
   align-items: center;
 }
-
 .aside img:active {
   animation: shakeY infinite;
   animation-duration: 1.7s;
 }
-
 .aside button {
   border: none;
   padding: 10px 20px;
@@ -133,32 +113,26 @@ p {
   margin-bottom: 15px;
   height: 100%;
 }
-
 .aside button:hover {
   background-color: var(--bg-dark);
   cursor: pointer;
   color: var(--btn-green-hover);
 }
-
 .aside .btn_chat {
   display: flex;
   align-items: center;
   flex-direction: column;
   margin-left: 35%;
 }
-
 .aside .btn_chat .icons {
   font-size: 35px;
   margin-right: 25px;
   margin-bottom: -2px;
   background-color: transparent;
 }
-
 .aside .BtnFirts {
   margin-top: 25px;
 }
-
-/*  CHAT */
 .chatContainer {
   margin-top: 10px;
   margin-bottom: 10px;
@@ -179,8 +153,6 @@ p {
 .chatContainer::-webkit-scrollbar-thumb {
   background-color: var(--bg-gray);
 }
-
-
 .chatContainer .space {
   margin-left: 25px;
   margin-right: 25px;
@@ -188,7 +160,6 @@ p {
   min-height: 100vh;
   width: 100%;
 }
-
 .chatMessageV {
   background-color: var(--bg-black);
   color: var(--bgChat);
@@ -197,16 +168,9 @@ p {
   letter-spacing: 1px;
   font-size: 17px;
 }
-
 .chatMessageHidden {
   display: none;
 }
-
-/* CSS HEADER DO CHATBOT */
-
-
-
-/*DARK MOD */
 :root.dark-theme {
   --bgGreen: #e20000;
   --bgChat: #e20000;
@@ -217,8 +181,6 @@ p {
   --btn-green-hover: #C90000;
   --msg: #fff;
 }
-
-/* LIGHT MODE */
 :root.light-theme {
   --bgGreen: #c5c5c5;
   --bgChat: #181818;
@@ -229,7 +191,6 @@ p {
   --btn-green-hover: #c5c5c5;
   --msg: #000;
 }
-
 .theme {
   --bgGreen: #c5c5c5;
   --bgChat: #181818;
@@ -240,7 +201,6 @@ p {
   --btn-green-hover: #c5c5c5;
   --msg: #000;
 }
-
 .light-theme {
   --bgGreen: #c5c5c5;
   --bgChat: #181818;
@@ -251,7 +211,6 @@ p {
   --btn-green-hover: #c5c5c5;
   --msg: #000;
 }
-
 .dark-theme {
   --bgGreen: #e20000;
   --bgChat: #e20000;

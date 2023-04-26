@@ -1,26 +1,20 @@
 import React, { useEffect, useRef, useState } from 'react';
-// imagens
 import roboJpg from '../../assets/img/robô.jpg';
 import roboGif from '../../assets/img/robô.gif';
-//icones
 import { FaJenkins, FaReact, FaStackOverflow, FaNodeJs } from "react-icons/fa";
-//audios
 import audioFile from '../../assets/audio/audio.mp3'
 import audioFilelanguages from '../../assets/audio/audioLinguagensUtilizadas.mp3'
-//efeito maquina de escreve Js
 import { typeWriter } from '../../assets/js/typeWriter';
 import '../../assets/css/ChatBot.css'
 import '../../assets/css/responsive.css'
 import ReactQuestions from '../Questionario_Perguntas/ReactQuestions.jsx';
 import Axios from 'axios'
-
 function Robot() {
   const [texto, setTexto] = useState('Ola! Seja bem vindo a prova de back-end');
   const MaquinaDeEscrever = useRef(null);
   useEffect(() => {
     typeWriter(MaquinaDeEscrever.current, texto);
   }, [texto]);
-
   const creatorAudio = new Audio(audioFile);
   const creator = () => {
     setChatMessage('chatMessageV');
@@ -69,7 +63,6 @@ function Robot() {
       setBotaoClicado(false);
     }, 7500)
   }
-
   const [questionnaire, setQuestionnaire] = useState(null);
   const [chatMessage, setChatMessage] = useState('chatMessageV');
   const [chatHidden, setChatHidden] = useState('chatMessageHidden');
@@ -92,7 +85,6 @@ function Robot() {
     alert("Parabéns! Você encontrou um Easter Egg. \nEnvie uma foto no grupo dessa página no tema dark-mod e, se você for o primeiro, ganhará um chocolate!");
     setTheme(theme === "light" ? "dark" : "light");
   }
-
   return (
     <>
       <div className={`bodyChat ${theme === "light" ? "light-theme" : "dark-theme"}`}>
