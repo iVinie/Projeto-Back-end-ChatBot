@@ -48,12 +48,8 @@ const Formulario = () => {
                 senha: user.senha
             }).then((response) => {
                 if (response.status === 200) {
-                    setUser({
-                        cpf: response.data.cpf,
-                        nome: response.data.nome,
-                    })
                     setStatusLogin({ type: "success", mensagem: "Login realizado com sucesso" })
-                    handleClick()
+                    handleClick(response.data.nome, response.data.cpf)
                 } else {
                     setStatusLogin({ type: "error", mensagem: "CPF ou senha incorretos" })
                 }
@@ -178,7 +174,7 @@ const Formulario = () => {
         setChangeImg(false);
     }
     const [LoadingImgOn, setLoadingImgOn] = useState(false);
-    function handleClick() {
+    function handleClick(name, cpf) {
         setLoadingImgOn(true);
         setLinkON(false);
         setCadatroForm('oculto');
@@ -190,7 +186,7 @@ const Formulario = () => {
             setCadatroForm('oculto');
             setloginForm('oculto');
             setContainer('oculto');
-            Constants.TIMELINKTWO();
+            Constants.TIMELINKTWO(name, cpf);
         }, 2200);
     }
     const [linkOn, setLinkON] = useState(false)

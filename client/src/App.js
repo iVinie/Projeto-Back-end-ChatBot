@@ -8,7 +8,7 @@ function App() {
     <Router>
         <Routes>
           <Route path='/' element={<Home />} />
-          <Route exact path='/chat' element={<ChatBot />} />
+          <Route exact path='/chat/:cpf' element={<ChatBot />} />
           <Route exact path='/form' element={<Formulario />} />
         </Routes>
     </Router>

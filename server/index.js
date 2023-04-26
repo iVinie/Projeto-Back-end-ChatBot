@@ -119,5 +119,25 @@ app.post('/verifique', (req, res) => {
     }
   )
 })
+app.post('/testarLogin', (req, res) => {
+  const { cpf } = req.body
+  console.log (cpf)
+  db.query(
+    `SELECT * FROM users WHERE cpf = '${cpf}'`,
+    (err, result) => {
+      if (err) {
+        console.log(err)
+        res.status(500).send('Erro ao verificar usuário.')
+      }
+      if (result.length === 0) {
+        res.status(409).send(result)
+        console.log ('Estou aqui 1')
+      } else {
+        res.status(200).send(result)
+        console.log('estou aqui 2')
+      }
+    }
+  )
+})
 const PORT = 3001
 app.listen(PORT, () => console.log(`Servidor Express rodando na porta ${PORT}`))
