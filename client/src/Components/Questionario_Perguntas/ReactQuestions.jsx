@@ -3,7 +3,7 @@ import '../../assets/css/ReactQuestions.css'
 import Axios from 'axios'
 import { useParams } from 'react-router-dom';
 function ReactQuestions() {
-    let cpf = useParams()
+    let {cpf} = useParams()
     const [questions, setQuestions] = useState([]);
     const [answers, setAnswers] = useState({
         q1: '',
