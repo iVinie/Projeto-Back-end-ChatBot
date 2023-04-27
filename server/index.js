@@ -8,7 +8,7 @@ app.post('/register', (req, res) => {
   const { name } = req.body
   const { cpf } = req.body
   const { senha } = req.body
-  const nameRegex = /^[A-Z][a-z]+([.'-][A-Za-z]+)*( [A-Za-z]+)+$/
+  const nameRegex = /^[A-ZÀ-ÖØ-öø-ſ][a-zà-öø-ÿ]+([.'-][A-Za-zà-öø-ÿ]+)*( [A-Za-zà-öø-ÿ]+)+$/;
   db.query(
     `SELECT * FROM users WHERE cpf = '${cpf}'`,
     (err, result) => {
@@ -121,7 +121,6 @@ app.post('/verifique', (req, res) => {
 })
 app.post('/testarLogin', (req, res) => {
   const { cpf } = req.body
-  console.log (cpf)
   db.query(
     `SELECT * FROM users WHERE cpf = '${cpf}'`,
     (err, result) => {
@@ -131,13 +130,24 @@ app.post('/testarLogin', (req, res) => {
       }
       if (result.length === 0) {
         res.status(409).send(result)
-        console.log ('Estou aqui 1')
       } else {
         res.status(200).send(result)
-        console.log('estou aqui 2')
       }
     }
   )
 })
-const PORT = 3001
-app.listen(PORT, () => console.log(`Servidor Express rodando na porta ${PORT}`))
+app.post('/Autent', (req, res) =>{
+  const { name } = req.body
+  const { cpf } = req.body
+console.log(name, cpf)
+  db.query(`SELECT * FROM users WHERE cpf = '${cpf}' AND nome = '${name}'`, (err, result) =>{
+    if (err) {
+      console.log(err)
+      res.status(500).send(false)
+    }else{
+      res.status(200).send(true)
+    }
+  })
+})
+  const PORT = 3001
+  app.listen(PORT, () => console.log(`Servidor Express rodando na porta ${PORT}`))

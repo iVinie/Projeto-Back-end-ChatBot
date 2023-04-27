@@ -76,7 +76,7 @@ const Formulario = () => {
     }, [cpfValue])
     const valueInput = e => setUser({ ...user, [e.target.name]: e.target.value });
     function validate_status() {
-        const nameRegex = /^[A-Z][a-z]+([.'-][A-Za-z]+)*( [A-Za-z]+)+$/
+        const nameRegex = /^[A-ZÀ-ÖØ-öø-ſ][a-zà-öø-ÿ]+([.'-][A-Za-zà-öø-ÿ]+)*( [A-Za-zà-öø-ÿ]+)+$/;
         if (!user.name) return setStatus({ type: "error", mensagem: "Campos Nome Não preenchido" });
         if (user.name.length < 10) return setStatus({ type: "error", mensagem: "Nome Menor que 10 caracteres!" });
         if (!nameRegex.test(user.name)) return setStatus({ type: "error", mensagem: "Nome e Sobrenome" })
@@ -311,5 +311,7 @@ const Formulario = () => {
             </div>
         </>
     )
+
 }
+
 export default Formulario;

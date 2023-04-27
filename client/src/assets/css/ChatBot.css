@@ -3,7 +3,10 @@
   padding: 0;
 }
 .name{
-  color: var(--msg);
+  color: #ececec;
+  background-color: #444444;
+  border: 0.5px solid;
+  border-radius: 10px;
 }
 .bodyChat {
   max-height: 100vh;
@@ -72,12 +75,14 @@ p {
   animation-fill-mode: forwards;
 }
 .aside {
+  margin-top: 10px;
   align-items: center;
+  justify-content: center;
   display: flex;
   flex-direction: column;
   width: 35%;
   background-color: var(--bg-black);
-  max-height: 100vh;
+  max-height: 98vh;
   overflow-y: scroll;
   overflow-x: hidden;
 }
@@ -93,7 +98,6 @@ p {
 }
 .aside img {
   width: 80%;
-  align-items: center;
 }
 .aside img:active {
   animation: shakeY infinite;
@@ -104,17 +108,15 @@ p {
   padding: 10px 20px;
   font-size: 18px;
   font-weight: bold;
-  border-radius: 5px;
+  border-radius: 10px;
   transition: background-color 0.3s ease-in-out;
   margin: 2px;
-  width: 60%;
+  width: 50vh;
   padding: 15px;
   background-color: var(--bg-white);
   color: var(--msg);
-  margin-left: 55px;
-  margin-right: 305px;
-  margin-bottom: 15px;
-  height: 100%;
+  margin-right: 40vh;
+
 }
 .aside button:hover {
   background-color: var(--bg-dark);
@@ -141,10 +143,12 @@ p {
   margin-bottom: 10px;
   max-height: 97.2vh;
   border: 0.5px solid var(--bgChat);
+  border-radius: 10px;
   overflow-y: scroll;
   overflow-x: hidden;
   width: 55%;
-  background-color: var(--bg-black);
+  background-color: #444444;
+  margin-left: 5px;
 }
 .chatContainer::-webkit-scrollbar {
   width: 5px;
@@ -164,8 +168,8 @@ p {
   width: 100%;
 }
 .chatMessageV {
-  background-color: var(--bg-black);
-  color: var(--bgChat);
+  background-color: #444444;
+  color: #ececec;
   width: 100%;
   font-family: 'Arial', serif;
   letter-spacing: 1px;

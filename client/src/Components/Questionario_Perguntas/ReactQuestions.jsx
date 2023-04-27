@@ -1,7 +1,9 @@
 import React, { useState, useEffect, Fragment } from 'react';
 import '../../assets/css/ReactQuestions.css'
 import Axios from 'axios'
+import { useParams } from 'react-router-dom';
 function ReactQuestions() {
+    let cpf = useParams()
     const [questions, setQuestions] = useState([]);
     const [answers, setAnswers] = useState({
         q1: '',
@@ -45,7 +47,7 @@ function ReactQuestions() {
         }
         Axios.post("http://localhost:3001/save", {
             valor: correctCount,
-            user_cpf: 'CPF',
+            user_cpf: cpf,
             disciplina_nome: 'Back-End'
         }).then((response) => {
             if (correctCount === 10) {
