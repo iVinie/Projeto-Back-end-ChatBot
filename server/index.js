@@ -136,16 +136,17 @@ app.post('/testarLogin', (req, res) => {
     }
   )
 })
-app.post('/Autent', (req, res) =>{
+app.post('/autenticacao', (req, res) =>{
   const { name } = req.body
   const { cpf } = req.body
-console.log(name, cpf)
-  db.query(`SELECT * FROM users WHERE cpf = '${cpf}' AND nome = '${name}'`, (err, result) =>{
+  db.query(`SELECT * FROM users WHERE nome = '${name}' AND cpf = '${cpf}'`, (err, result) =>{
     if (err) {
       console.log(err)
       res.status(500).send(false)
-    }else{
+    }else if(result.length > 0){
       res.status(200).send(true)
+    }else{
+      res.status(409).send(false)
     }
   })
 })

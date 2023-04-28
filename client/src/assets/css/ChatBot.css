@@ -139,10 +139,9 @@ p {
   margin-top: 25px;
 }
 .chatContainer {
-  margin-top: 10px;
-  margin-bottom: 10px;
+  margin: 10px 0px 10px 0px;
   max-height: 97.2vh;
-  border: 0.5px solid var(--bgChat);
+  border: 0.5px solid var(--bg-dark);
   border-radius: 10px;
   overflow-y: scroll;
   overflow-x: hidden;
@@ -177,6 +176,9 @@ p {
 }
 .chatMessageHidden {
   display: none;
+}
+.btn_verifique{
+  margin-bottom: 10px;
 }
 :root.dark-theme {
   --bgGreen: #e20000;

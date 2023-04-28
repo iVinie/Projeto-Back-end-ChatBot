@@ -16,6 +16,21 @@ function Robot() {
   const [texto, setTexto] = useState('Ola! Seja bem vindo a prova de back-end');
   const MaquinaDeEscrever = useRef(null);
   useEffect(() => {
+    Axios.post("http://localhost:3001/autenticacao", {
+      name: name,
+      cpf: cpf
+    }).then((res) => {
+      if(res.status === 200){
+        console.log('Sucesso')
+      }else{
+        window.location.href = `http://localhost:3000`;
+      }
+    })
+      .catch((res) => {
+        window.location.href = `http://localhost:3000`;
+      })
+  })
+  useEffect(() => {
     typeWriter(MaquinaDeEscrever.current, texto);
   }, [texto]);
   const creatorAudio = new Audio(audioFile);

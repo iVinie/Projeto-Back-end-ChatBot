@@ -95,7 +95,7 @@ function ReactQuestions() {
                     </div>
                 </Fragment>
             ))}
-            <button onClick={handleSubmit}>Verificar Respostas</button>
+            <button className='btn_verifique' onClick={handleSubmit}>Verificar Respostas</button>
         </div>
     );
 }
