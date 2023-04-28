@@ -1,0 +1,19 @@
+ul li{
+    position: absolute;
+    font-size: 20px;
+    font-family: Arial, Helvetica, sans-serif;
+    list-style: none;
+    border: 1px solid;
+    border-radius: 10px;
+    width: 15vh;
+    margin-left: 3vh;
+}
+.dropdown-header{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.icon {
+    font-size: 20px;
+    color: var(--msg);
+}

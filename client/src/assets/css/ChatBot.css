@@ -2,11 +2,18 @@
   margin: 0;
   padding: 0;
 }
+
 .name{
-  color: #ececec;
-  background-color: #444444;
-  border: 0.5px solid;
+  cursor: pointer;
+  border: none;
+  padding: 10px 20px;
+  font-size: 25px;
+  font-weight: bold;
   border-radius: 10px;
+  transition: background-color 0.3s ease-in-out;
+  margin: 2px;
+  padding: 15px;
+  color: var(--msg);
 }
 .bodyChat {
   max-height: 100vh;
@@ -98,6 +105,7 @@ p {
 }
 .aside img {
   width: 80%;
+  margin-left: 5vh;
 }
 .aside img:active {
   animation: shakeY infinite;
@@ -115,7 +123,7 @@ p {
   padding: 15px;
   background-color: var(--bg-white);
   color: var(--msg);
-  margin-right: 40vh;
+  margin-right: 36vh;
 
 }
 .aside button:hover {

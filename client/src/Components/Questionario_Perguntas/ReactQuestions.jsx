@@ -4,6 +4,7 @@ import Axios from 'axios'
 import { useParams } from 'react-router-dom';
 function ReactQuestions() {
     let {cpf} = useParams()
+    let {provaName} = useParams()
     const [questions, setQuestions] = useState([]);
     const [answers, setAnswers] = useState({
         q1: '',
@@ -48,7 +49,7 @@ function ReactQuestions() {
         Axios.post("http://localhost:3001/save", {
             valor: correctCount,
             user_cpf: cpf,
-            disciplina_nome: 'Back-End'
+            disciplina_nome: provaName
         }).then((response) => {
             if (correctCount === 10) {
                 alert(`Parabéns! Você acertou todas as respostas! Sua note é : ${correctCount}`);

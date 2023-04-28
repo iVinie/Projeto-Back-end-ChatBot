@@ -50,6 +50,7 @@ app.post('/login', (req, res) => {
       return;
     }
     if (results.length > 0) {
+      db.query(`UPDATE users SET logado = true WHERE cpf=${cpf}`)
       res.send({ cpf: results[0].cpf, nome: results[0].nome })
     } else {
       res.status(401).send({ mensagem: 'CPF ou senha incorretos' })
@@ -139,7 +140,7 @@ app.post('/testarLogin', (req, res) => {
 app.post('/autenticacao', (req, res) =>{
   const { name } = req.body
   const { cpf } = req.body
-  db.query(`SELECT * FROM users WHERE nome = '${name}' AND cpf = '${cpf}'`, (err, result) =>{
+  db.query(`SELECT * FROM users WHERE nome = '${name}' AND cpf = '${cpf}' AND logado = '1'`, (err, result) =>{
     if (err) {
       console.log(err)
       res.status(500).send(false)
@@ -147,6 +148,17 @@ app.post('/autenticacao', (req, res) =>{
       res.status(200).send(true)
     }else{
       res.status(409).send(false)
+    }
+  })
+})
+app.post('/sair', (req, res) =>{
+  const { cpf } = req.body
+  db.query(`UPDATE users SET logado = false WHERE cpf=${cpf}`, (err, result) => {
+    if(err){
+      console.log(err)
+      res.send(result)
+    }else{
+      res.status(200).send(result)
     }
   })
 })
