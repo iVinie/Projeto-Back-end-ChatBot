@@ -29,14 +29,17 @@ nome VARCHAR(255) NOT NULL
 );
 
 CREATE INDEX idx_users_cpf ON users (cpf);
+CREATE INDEX idx_users_nome ON users (nome);
 CREATE INDEX idx_disciplina_nome ON disciplinas (nome);
 
 CREATE TABLE notas (
 id INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
-valor FLOAT NOT NULL,
 user_cpf VARCHAR(14) NOT NULL,
+user_nome VARCHAR(255) NOT NULL,
 disciplina_nome VARCHAR(255) NOT NULL,
+valor FLOAT NOT NULL,
 FOREIGN KEY (user_cpf) REFERENCES users(cpf),
+FOREIGN KEY (user_nome) REFERENCES users(nome),
 FOREIGN KEY (disciplina_nome) REFERENCES disciplinas(nome)
 );
 CREATE TABLE verificacao(

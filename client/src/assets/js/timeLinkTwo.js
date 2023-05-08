@@ -1,11 +1,11 @@
 import Axios from 'axios'
-function timeLinkTwo(name, cpf) {
+function timeLinkTwo(name, cpf, isAdmin) {
   Axios.post("http://localhost:3001/testarLogin",{
     name: name,
-    cpf: cpf
+    cpf: cpf,
   }).then((res) => {
     setTimeout(() => {
-      window.location.href = `http://localhost:3000/chat/${cpf}/${name}/back-end`;
+      window.location.href = `http://localhost:3000/chat/${cpf}/${name}/back-end/${isAdmin}`;
   },2000);
   }).catch((error) => {
     console.error(error)

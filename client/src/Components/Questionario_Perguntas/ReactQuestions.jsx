@@ -5,6 +5,7 @@ import { useParams } from 'react-router-dom';
 function ReactQuestions() {
     let {cpf} = useParams()
     let {provaName} = useParams()
+    let{name} = useParams()
     const [questions, setQuestions] = useState([]);
     const [answers, setAnswers] = useState({
         q1: '',
@@ -47,6 +48,7 @@ function ReactQuestions() {
             }
         }
         Axios.post("http://localhost:3001/save", {
+            name: name,
             valor: correctCount,
             user_cpf: cpf,
             disciplina_nome: provaName

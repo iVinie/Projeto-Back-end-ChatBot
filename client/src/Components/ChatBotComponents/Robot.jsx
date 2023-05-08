@@ -10,17 +10,21 @@ import '../../assets/css/responsive.css'
 import ReactQuestions from '../Questionario_Perguntas/ReactQuestions.jsx';
 import Axios from 'axios'
 import { useParams } from 'react-router-dom'
-import DropdownMenu from './DropdownMenu';
+import '../../assets/css/dropMenu.css'
+import TabelaDeNotas from './tableNotas';
 function Robot() {
   let { cpf } = useParams()
   let { name } = useParams()
   let { provaName } = useParams()
+  let { isAdmin } = useParams()
   const [texto, setTexto] = useState(`Ola! Seja bem vindo a prova de ${provaName}`);
+  const [table, setTable] = useState([])
   const MaquinaDeEscrever = useRef(null);
   useEffect(() => {
     Axios.post("http://localhost:3001/autenticacao", {
       name: name,
-      cpf: cpf
+      cpf: cpf,
+      isAdmin:isAdmin
     }).then((res) => {
       if (res.status === 200) {
         console.log('Sucesso')
@@ -32,6 +36,7 @@ function Robot() {
         window.location.href = `http://localhost:3000`;
       })
   })
+
   useEffect(() => {
     typeWriter(MaquinaDeEscrever.current, texto);
   }, [texto]);
@@ -87,16 +92,17 @@ function Robot() {
   const [chatMessage, setChatMessage] = useState('chatMessageV');
   const [chatHidden, setChatHidden] = useState('chatMessageHidden');
   const prova = () => {
-    if (window.confirm('Depois que iniciar, não pode refazer se sair.\nDeseja iniciar?') == true) {
+    if (window.confirm('Depois que iniciar, não pode refazer se sair.\nDeseja iniciar?') === true) {
       Axios.post("http://localhost:3001/verifique", {
         cpf_user: cpf
       }).then(() => {
-        setQuestionnaire(<ReactQuestions />);
         setChatMessage('chatMessageHidden');
         setChatHidden('chatMessageV')
+        setQuestionnaire(<ReactQuestions />);
+
       })
         .catch(() => {
-          alert("VOCÊ JÁ INICIOU A PROVA ANTES, SEU SAFADO")
+          setTexto("VOCÊ JÁ INICIOU A PROVA ANTES, SEU SAFADO")
         })
     }
   }
@@ -107,14 +113,46 @@ function Robot() {
     alert("Parabéns! Você encontrou um Easter Egg. \nEnvie uma foto no grupo dessa página no tema dark-mod e, se você for o primeiro, ganhará um chocolate!");
     setTheme(theme === "light" ? "dark" : "light");
   }
+  const [isOpen, setIsOpen] = useState(false);
+  function handleDrop() {
+    setIsOpen(!isOpen);
+  }
+  function handleLogout() {
+    Axios.post('http://localhost:3001/sair', {
+      cpf: cpf
+    }).then((res) => {
+      console.log(res)
+      if(res.status === 200){
+        window.location.href = `http://localhost:3000`;
+      }
+    }).catch((res) => {
+      console.log(res)
+    })
+  }
+  function handleNotas(){
+      setTable(<TabelaDeNotas />);
+      setChatMessage('chatMessageHidden');
+      setChatHidden('chatMessageV')
+    }
   return (
     <>
       <div className={`bodyChat ${theme === "light" ? "light-theme" : "dark-theme"}`}>
         <div className={`ContainerM`}>
           <div className='aside'>
-            <p className='name'> <DropdownMenu
-              name={name}
-              cpf={cpf} /> </p>
+            <p className='name'>
+              <div className="dropdown">
+                <div className="dropdown-header" onClick={handleDrop}>
+                  <span class="icon">&#9776;</span>
+                  <p className="name">{name}</p>
+                </div>
+                {isOpen && (
+                  <ul className="menu">
+                    <li onClick={() => handleLogout()}>Sair</li>
+                    <br />
+                    <li onClick={() => handleNotas()}>Nota</li>
+                  </ul>
+                )}
+              </div> </p>
             <img src={imgRb === 'roboJpg' ? roboJpg : roboGif} alt="Robô" onClick={() => handleThemeChange()} />
             <div class='btn_chat'>
               <button disabled={botaoClicado}
@@ -149,6 +187,7 @@ function Robot() {
             <div class='space'>
               <div ref={MaquinaDeEscrever} className={chatMessage}>{texto}</div>
               <div className={chatHidden}>{questionnaire}</div>
+              <div className={chatHidden}>{table}</div>
             </div>
           </div>
         </div>

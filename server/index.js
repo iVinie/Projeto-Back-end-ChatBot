@@ -51,7 +51,7 @@ app.post('/login', (req, res) => {
     }
     if (results.length > 0) {
       db.query(`UPDATE users SET logado = true WHERE cpf=${cpf}`)
-      res.send({ cpf: results[0].cpf, nome: results[0].nome })
+      res.send({ cpf: results[0].cpf, nome: results[0].nome, isAdmin: results[0].is_admin })
     } else {
       res.status(401).send({ mensagem: 'CPF ou senha incorretos' })
     }
@@ -65,6 +65,7 @@ app.get('/perguntas', (req, res) => {
   });
 });
 app.post('/save', (req, res) => {
+  const { name } = req.body
   const { valor } = req.body
   const { user_cpf } = req.body
   const { disciplina_nome } = req.body
@@ -79,7 +80,7 @@ app.post('/save', (req, res) => {
         res.status(409).send(result)
       } else {
         db.query(
-          `INSERT INTO notas (valor, user_cpf, disciplina_nome) VALUES ("${valor}", "${user_cpf}", "${disciplina_nome}")`,
+          `INSERT INTO notas (user_nome, user_cpf, disciplina_nome, valor) VALUES ("${name}", "${user_cpf}",  "${disciplina_nome}", "${valor}")`,
           (err, result) => {
             if (err) {
               console.log(err);
@@ -140,7 +141,8 @@ app.post('/testarLogin', (req, res) => {
 app.post('/autenticacao', (req, res) =>{
   const { name } = req.body
   const { cpf } = req.body
-  db.query(`SELECT * FROM users WHERE nome = '${name}' AND cpf = '${cpf}' AND logado = '1'`, (err, result) =>{
+  const { isAdmin } = req.body
+  db.query(`SELECT * FROM users WHERE nome = '${name}' AND cpf = '${cpf}' AND is_admin = '${isAdmin}' AND logado = '1'`, (err, result) =>{
     if (err) {
       console.log(err)
       res.status(500).send(false)
@@ -161,6 +163,31 @@ app.post('/sair', (req, res) =>{
       res.status(200).send(result)
     }
   })
+})
+app.post('/notas', (req, res) => {
+  const { cpf } = req.body
+  const { isAdmin } = req.body
+  console.log(cpf)
+  if(isAdmin === '1'){
+    db.query('SELECT * FROM notas', (err, result) =>{
+      if(err){
+        console.log(err)
+        res.send(result)
+      }else{
+        res.status(200).send(result)
+      }
+    })
+  }else{
+    db.query(`SELECT * FROM notas WHERE user_cpf = '${cpf}'`, (err, result) =>{
+      if(err){
+        console.log(err)
+        res.send(result)
+      }else{
+        res.status(200).send(result)
+      }
+    })
+  }
+
 })
   const PORT = 3001
   app.listen(PORT, () => console.log(`Servidor Express rodando na porta ${PORT}`))
