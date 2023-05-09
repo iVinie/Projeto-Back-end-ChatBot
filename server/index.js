@@ -4,6 +4,20 @@ const cors = require('cors')
 const app = express()
 app.use(cors())
 app.use((express.json()))
+app.post('/validacao', (req, res) => {
+  const { cpf } = req.body
+  db.query(
+    `SELECT * FROM users WHERE cpf = '${cpf}'`,
+    (err, result) => {
+      if (err) {
+        console.log(err)
+        res.status(500).send('Erro ao verificar usuário.')
+      }
+      if (result.length > 0) {
+        res.status(200).send(false)
+      }
+    })
+})
 app.post('/register', (req, res) => {
   const { name } = req.body
   const { cpf } = req.body
@@ -167,7 +181,6 @@ app.post('/sair', (req, res) =>{
 app.post('/notas', (req, res) => {
   const { cpf } = req.body
   const { isAdmin } = req.body
-  console.log(cpf)
   if(isAdmin === '1'){
     db.query('SELECT * FROM notas', (err, result) =>{
       if(err){

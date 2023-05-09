@@ -28,13 +28,18 @@ const Formulario = () => {
         type: "",
         mensagem: ""
     });
-    const handleClickButton = () => {
+    const handleClickButton = (e) => {
         if (validate_status()) {
             Axios.post("http://localhost:3001/register", {
                 name: user.name,
                 cpf: user.cpf,
                 senha: user.senha
-            }).then((response) => console.log(response))
+            }).then((response) =>  {
+                setStatus({ type: "sucesso", mensagem: "Usuário cadastrado com sucesso!" })
+                setTimeout(()=>{
+                    handleClickThree()
+                },2000)
+            })
                 .catch((error) => {
                     console.log(error)
                     setStatus({ type: "error", mensagem: "Usuário já cadastrado" })
@@ -88,10 +93,7 @@ const Formulario = () => {
         if (user.senha.length < 5) return setStatus({ type: "error", mensagem: "senha precisa ser de 5 digitos" });
         if (!user.cfmsenha) return setStatus({ type: "error", mensagem: "não prencheu o campos de confirmação de senhas" });
         if (user.name.length < 10) return setStatus({ type: "error", mensagem: "Nome Menor que 10 caracteres!" });
-        if (user.senha != "" && user.cfmsenha != "" && user.senha === user.cfmsenha) {
-            Constants.TIMELINKTWO();
-        }
-        else {
+        if(user.senha == '' || user.cfmsenha == '' || user.senha != user.cfmsenha) {
             return setStatus({ type: "error", mensagem: "Todos os campos correto mas as Senhas estão diferentes" })
         }
         return true;
@@ -112,7 +114,6 @@ const Formulario = () => {
             });
         }
     }
-    // Funcoes que irão modificar as classes
     const handleClickOne = (e) => {
         e.preventDefault();
         setShowSliderLeft(true);
@@ -127,7 +128,6 @@ const Formulario = () => {
         }, 500);
     }
     const handleClickThree = (e) => {
-        e.preventDefault();
         setShowSliderLeftOne(true);
         setShowSliderRightOne(true);
         settextVisible(false);
@@ -244,7 +244,7 @@ const Formulario = () => {
                                 <img src={Constants.LOGOGRAU} alt="Logo" />
                                 <h2>Esqueci minha Senha</h2>
                                 <div className='FormEmail'>
-                                    <form action="https://formsubmit.co/Assueromota@hotmail.com" method="POST">
+                                    <form action="https://formsubmit.co/vinie.oliveira17@gmail.com" method="POST">
                                         <input type="text" name="CPF Cadastrado" placeholder='Digite o Cpf'></input>
                                         <input type="text" name="Email" placeholder='Digite um Email Valido' value={email} onChange={handleEmailChange} ></input>
                                         <input type="hidden" name="_cc" value={email} onChange={handleEmailChange}></input>
@@ -273,6 +273,7 @@ const Formulario = () => {
                                         <p>Não Trate como Constante Quem te Trata Como Variável</p>
                                         <br></br>
                                         {status.type === "error" ? <p style={{ color: "red" }}>{status.mensagem}</p> : ""}
+                                        {status.type === "sucesso" ? <p style={{ color: "green" }}>{status.mensagem}</p> : ""}
                                         <form onSubmit={addUser} className="form__input">
                                             <input
                                                 type="text"
