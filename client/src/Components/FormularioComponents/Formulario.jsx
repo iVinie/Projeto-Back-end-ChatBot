@@ -277,7 +277,7 @@ const Formulario = () => {
                                             <input
                                                 type="text"
                                                 name="name"
-                                                placeholder="Nome"
+                                                placeholder="Nome e Sobrenome Ex:Novo Usuário"
                                                 onChange={valueInput} maxLength="50" />
                                             <input
                                                 type="text"

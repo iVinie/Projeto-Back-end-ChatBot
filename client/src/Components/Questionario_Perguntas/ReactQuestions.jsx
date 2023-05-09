@@ -6,6 +6,7 @@ function ReactQuestions() {
     let {cpf} = useParams()
     let {provaName} = useParams()
     let{name} = useParams()
+    let{isAdmin} = useParams()
     const [questions, setQuestions] = useState([]);
     const [answers, setAnswers] = useState({
         q1: '',
@@ -68,6 +69,12 @@ function ReactQuestions() {
     const handleSubmit = (event) => {
         event.preventDefault();
         checkAnswers();
+        setTimeout(()=>{
+            alert('Finalizando prova...')
+        },2000)
+        setTimeout(()=>{
+            window.location.href = `http://localhost:3000/chat/${cpf}/${name}/back-end/${isAdmin}`;
+        }, 5000)
     };
     return (
         <div className='Questions typewriter radio-container' id='text'>

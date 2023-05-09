@@ -24,7 +24,7 @@ function Robot() {
     Axios.post("http://localhost:3001/autenticacao", {
       name: name,
       cpf: cpf,
-      isAdmin:isAdmin
+      isAdmin: isAdmin
     }).then((res) => {
       if (res.status === 200) {
         console.log('Sucesso')
@@ -93,17 +93,19 @@ function Robot() {
   const [chatHidden, setChatHidden] = useState('chatMessageHidden');
   const prova = () => {
     if (window.confirm('Depois que iniciar, não pode refazer se sair.\nDeseja iniciar?') === true) {
-      Axios.post("http://localhost:3001/verifique", {
-        cpf_user: cpf
-      }).then(() => {
-        setChatMessage('chatMessageHidden');
-        setChatHidden('chatMessageV')
-        setQuestionnaire(<ReactQuestions />);
-
-      })
-        .catch(() => {
-          setTexto("VOCÊ JÁ INICIOU A PROVA ANTES, SEU SAFADO")
+      setTexto('Iniciando a prova...')
+      setTimeout(() => {
+        Axios.post("http://localhost:3001/verifique", {
+          cpf_user: cpf
+        }).then(() => {
+          setChatMessage('chatMessageHidden');
+          setChatHidden('chatMessageV')
+          setQuestionnaire(<ReactQuestions />)
         })
+          .catch(() => {
+            setTexto("VOCÊ JÁ INICIOU A PROVA ANTES, SEU SAFADO")
+          })
+      }, 3000)
     }
   }
   const [botaoClicado, setBotaoClicado] = useState(false);
@@ -122,18 +124,21 @@ function Robot() {
       cpf: cpf
     }).then((res) => {
       console.log(res)
-      if(res.status === 200){
+      if (res.status === 200) {
         window.location.href = `http://localhost:3000`;
       }
     }).catch((res) => {
       console.log(res)
     })
   }
-  function handleNotas(){
+  function handleNotas() {
+    setTexto('Verificando...')
+    setTimeout(()=>{
       setTable(<TabelaDeNotas />);
       setChatMessage('chatMessageHidden');
       setChatHidden('chatMessageV')
-    }
+    }, 3000)
+  }
   return (
     <>
       <div className={`bodyChat ${theme === "light" ? "light-theme" : "dark-theme"}`}>
