@@ -13,6 +13,7 @@ import { useParams } from 'react-router-dom'
 import '../../assets/css/dropMenu.css'
 import TabelaDeNotas from './tableNotas';
 function Robot() {
+  const now = new Date
   let { cpf } = useParams()
   let { name } = useParams()
   let { provaName } = useParams()
@@ -95,21 +96,38 @@ function Robot() {
   const [chatHidden, setChatHidden] = useState('chatMessageHidden');
   const prova = () => {
     if (window.confirm('Depois que iniciar você terá 7 minutos e 30 segundos e não pode refazer se sair.\nDeseja iniciar?') === true) {
-      setTexto('Iniciando a prova...')
-      setTimeout(() => {
-        Axios.post("http://localhost:3001/verifique", {
-          cpf_user: cpf
-        }).then(() => {
-          startTempo()
-          setChatMessage('chatMessageHidden');
-          setChatHidden('chatMessageV')
-          setQuestionnaire(<ReactQuestions />)
-        })
-          .catch(() => {
-            setTexto("VOCÊ JÁ INICIOU A PROVA ANTES, SEU SAFADO")
+      let horaAtual = new Date().getHours();
+      let minutosAtual = new Date().getMinutes();
+      let horaInicio = 18;
+      let minutosInicio = 30;
+      let horaFim = 22;
+      let minutosFim = 45;
+      let minutosInicioTotal = horaInicio * 60 + minutosInicio;
+      let minutosFimTotal = horaFim * 60 + minutosFim;
+      let minutosAtualTotal = horaAtual * 60 + minutosAtual;
+      if (now.toLocaleDateString() === '15/05/2023' && (minutosAtualTotal >= minutosInicioTotal && minutosAtualTotal <= minutosFimTotal)) {
+        setTexto('Iniciando a prova...')
+        setTimeout(() => {
+          Axios.post("http://localhost:3001/verifique", {
+            cpf_user: cpf
+          }).then(() => {
+            startTempo()
+            setChatMessage('chatMessageHidden');
+            setChatHidden('chatMessageV')
+            setQuestionnaire(<ReactQuestions />)
           })
-      }, 3000)
+            .catch(() => {
+              setTexto("VOCÊ JÁ INICIOU A PROVA ANTES, SEU SAFADO")
+            })
+        }, 3000)
+      } else {
+        setTexto(`Horário da prova:
+        Dia: ${now.toLocaleDateString()},
+        Hora de inicio: 18:30,
+        Hora do termino: 22:45`)
+      }
     }
+
   }
   const [botaoClicado, setBotaoClicado] = useState(false);
   const [imgRb, setImgRb] = useState('roboJpg');
@@ -136,7 +154,7 @@ function Robot() {
   }
   function handleNotas() {
     setTexto('Verificando...')
-    setTimeout(()=>{
+    setTimeout(() => {
       setTable(<TabelaDeNotas />);
       setChatMessage('chatMessageHidden');
       setChatHidden('chatMessageV')
@@ -148,37 +166,37 @@ function Robot() {
     const minutes = Math.floor((total / 1000 / 60) % 60);
     const hours = Math.floor((total / 1000 * 60 * 60) % 24);
     return {
-        total, hours, minutes, seconds
+      total, hours, minutes, seconds
     };
-}
-const startTimer = (e) => {
-    let { total, hours, minutes, seconds } 
-                = getTimeRemaining(e);
+  }
+  const startTimer = (e) => {
+    let { total, hours, minutes, seconds }
+      = getTimeRemaining(e);
     if (total >= 0) {
-        setTimer(
-            (hours > 9 ? hours : '0' + hours) + ':' +
-            (minutes > 9 ? minutes : '0' + minutes) + ':'
-            + (seconds > 9 ? seconds : '0' + seconds)
-        )
+      setTimer(
+        (hours > 9 ? hours : '0' + hours) + ':' +
+        (minutes > 9 ? minutes : '0' + minutes) + ':'
+        + (seconds > 9 ? seconds : '0' + seconds)
+      )
     }
-}
-const clearTimer = (e) => {   
+  }
+  const clearTimer = (e) => {
     setTimer('00:07:30');
     if (Ref.current) clearInterval(Ref.current);
     const id = setInterval(() => {
-        startTimer(e);
+      startTimer(e);
     }, 1000)
     Ref.current = id;
-}
-const getDeadTime = () => {
+  }
+  const getDeadTime = () => {
     let deadline = new Date();
     deadline.setSeconds(deadline.getSeconds() + 30);
     deadline.setMinutes(deadline.getMinutes() + 7)
     return deadline;
-}
-const startTempo  =() => {
+  }
+  const startTempo = () => {
     clearTimer(getDeadTime());
-}
+  }
   return (
     <>
       <div className={`bodyChat ${theme === "light" ? "light-theme" : "dark-theme"}`}>
