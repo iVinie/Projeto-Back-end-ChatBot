@@ -20,6 +20,8 @@ function Robot() {
   const [texto, setTexto] = useState(`Ola! Seja bem vindo a prova de ${provaName}`);
   const [table, setTable] = useState([])
   const MaquinaDeEscrever = useRef(null);
+  const Ref = useRef(null);
+  const [timer, setTimer] = useState('00:00:00');
   useEffect(() => {
     Axios.post("http://localhost:3001/autenticacao", {
       name: name,
@@ -92,12 +94,13 @@ function Robot() {
   const [chatMessage, setChatMessage] = useState('chatMessageV');
   const [chatHidden, setChatHidden] = useState('chatMessageHidden');
   const prova = () => {
-    if (window.confirm('Depois que iniciar, não pode refazer se sair.\nDeseja iniciar?') === true) {
+    if (window.confirm('Depois que iniciar você terá 7 minutos e 30 segundos e não pode refazer se sair.\nDeseja iniciar?') === true) {
       setTexto('Iniciando a prova...')
       setTimeout(() => {
         Axios.post("http://localhost:3001/verifique", {
           cpf_user: cpf
         }).then(() => {
+          startTempo()
           setChatMessage('chatMessageHidden');
           setChatHidden('chatMessageV')
           setQuestionnaire(<ReactQuestions />)
@@ -139,6 +142,43 @@ function Robot() {
       setChatHidden('chatMessageV')
     }, 3000)
   }
+  const getTimeRemaining = (e) => {
+    const total = Date.parse(e) - Date.parse(new Date());
+    const seconds = Math.floor((total / 1000) % 60);
+    const minutes = Math.floor((total / 1000 / 60) % 60);
+    const hours = Math.floor((total / 1000 * 60 * 60) % 24);
+    return {
+        total, hours, minutes, seconds
+    };
+}
+const startTimer = (e) => {
+    let { total, hours, minutes, seconds } 
+                = getTimeRemaining(e);
+    if (total >= 0) {
+        setTimer(
+            (hours > 9 ? hours : '0' + hours) + ':' +
+            (minutes > 9 ? minutes : '0' + minutes) + ':'
+            + (seconds > 9 ? seconds : '0' + seconds)
+        )
+    }
+}
+const clearTimer = (e) => {   
+    setTimer('00:07:30');
+    if (Ref.current) clearInterval(Ref.current);
+    const id = setInterval(() => {
+        startTimer(e);
+    }, 1000)
+    Ref.current = id;
+}
+const getDeadTime = () => {
+    let deadline = new Date();
+    deadline.setSeconds(deadline.getSeconds() + 30);
+    deadline.setMinutes(deadline.getMinutes() + 7)
+    return deadline;
+}
+const startTempo  =() => {
+    clearTimer(getDeadTime());
+}
   return (
     <>
       <div className={`bodyChat ${theme === "light" ? "light-theme" : "dark-theme"}`}>
@@ -149,6 +189,7 @@ function Robot() {
                 <div className="dropdown-header" onClick={handleDrop}>
                   <span class="icon">&#9776;</span>
                   <p className="name">{name}</p>
+                  <p className='timer-style'>{timer}</p>
                 </div>
                 {isOpen && (
                   <ul className="menu">

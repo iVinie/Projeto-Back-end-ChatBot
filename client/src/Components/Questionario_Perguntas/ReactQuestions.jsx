@@ -21,6 +21,11 @@ function ReactQuestions() {
         q10: ''
     });
     useEffect(() => {
+        setTimeout(() =>{
+            handleSubmit()
+        }, 450000)
+    }, []);
+    useEffect(() => {
         Axios.get('http://localhost:3001/perguntas')
             .then(response => {
                 setQuestions(response.data);
@@ -67,7 +72,6 @@ function ReactQuestions() {
             })
     }
     const handleSubmit = (event) => {
-        event.preventDefault();
         checkAnswers();
         setTimeout(()=>{
             alert('Finalizando prova...')

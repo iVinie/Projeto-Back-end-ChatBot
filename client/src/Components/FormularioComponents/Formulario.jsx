@@ -289,13 +289,13 @@ const Formulario = () => {
                                                 maxLength="11"
                                                 className={isValidCpf ? 'valid-cpf' : 'invalid-cpf'}
                                             />
-                                            <input type="text"
+                                            <input type="password"
                                                 name="senha"
                                                 placeholder="Senha"
                                                 onChange={valueInput}
                                                 maxLength="5"
                                             />
-                                            <input type="text"
+                                            <input type="password"
                                                 name="cfmsenha"
                                                 placeholder="Confirme Senha"
                                                 onChange={valueInput}
